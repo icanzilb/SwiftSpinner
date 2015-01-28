@@ -16,6 +16,8 @@ This is how the activity looks like (from the demo app):
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. That’ll run the demo program which shows you how the spinner looks like and what it can do. 
 
+#### Code samples
+
 The simple code to get `SwiftSpinner` running in your own app.
 
  * In case you installed SwiftSpinner via CocoaPods you need to import it (add this somewhere at the top of your source code file):

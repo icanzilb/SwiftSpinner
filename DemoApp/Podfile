@@ -1,0 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'SwiftSpinnerDemo', :exclusive => true do
+  pod "SwiftSpinner", :path => "../"
+end

@@ -1,0 +1,6 @@
+framework module SwiftSpinner {
+  umbrella header "Pods-SwiftSpinnerDemo-SwiftSpinner-umbrella.h"
+
+  export *
+  module * { export * }
+}

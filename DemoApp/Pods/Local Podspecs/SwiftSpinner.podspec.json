@@ -1,0 +1,22 @@
+{
+  "name": "SwiftSpinner",
+  "version": "0.6.0",
+  "summary": "A beautiful activity indicator written in Swift",
+  "description": "                       An optional longer description of SwiftSpinner\n\n                       * Markdown format.\n                       * Don't worry about the indent, we strip it!\n",
+  "homepage": "https://github.com/icanzilb/SwiftSpinner",
+  "license": "MIT",
+  "authors": {
+    "Marin Todorov": "marin@underplot.com"
+  },
+  "source": {
+    "git": "https://github.com/icanzilb/SwiftSpinner.git",
+    "tag": "0.6.0"
+  },
+  "social_media_url": "https://twitter.com/icanzilb",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "SwiftSpinner",
+  "frameworks": "UIKit"
+}

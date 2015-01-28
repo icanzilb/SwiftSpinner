@@ -20,19 +20,27 @@ The simple code to get SwiftSpinner running in your own app.
 
 1. In case you installed SwiftSpinner via CocoaPods you need to import it (add this somewhere at the top of your source code file):
 
+```swift
     import SwiftSpinner
+```
 
 2. When you want to show an animated activity (eg. rings are randomly rotating around):
 
+```swift
      SwiftSpinner.show("Connecting to satellite...")
-    
+```
+
 3. If you want to show a static activity indicator (eg. a message with two complete rings around it)
 
+```swift
     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-    
+```
+
 4. When you want to hide the activity:
 
+```swift
     SwiftSpinner.hide()
+```
 
 That's all. If you want to change the text of the current activity, just call `show(...)` again, this will animate the old text into the new text.
     
@@ -45,7 +53,9 @@ There aren’t any requirements per se. As long as you got `UIKit` imported the 
 SwiftSpinner is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+```
     pod "SwiftSpinner"
+```
 
 *NB*: Currently Swift Cocoapods work only with 0.36 pre-release version. If you want to learn how to install a Swift cocoapod read more here: http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/
 

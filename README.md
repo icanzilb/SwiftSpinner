@@ -16,27 +16,27 @@ This is how the activity looks like (from the demo app):
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. That’ll run the demo program which shows you how the spinner looks like and what it can do. 
 
-The simple code to get SwiftSpinner running in your own app.
+The simple code to get `SwiftSpinner` running in your own app.
 
-1. In case you installed SwiftSpinner via CocoaPods you need to import it (add this somewhere at the top of your source code file):
+ * In case you installed SwiftSpinner via CocoaPods you need to import it (add this somewhere at the top of your source code file):
 
 ```swift
     import SwiftSpinner
 ```
 
-2. When you want to show an animated activity (eg. rings are randomly rotating around):
+ * When you want to show an animated activity (eg. rings are randomly rotating around):
 
 ```swift
      SwiftSpinner.show("Connecting to satellite...")
 ```
 
-3. If you want to show a static activity indicator (eg. a message with two complete rings around it)
+ * If you want to show a static activity indicator (eg. a message with two complete rings around it)
 
 ```swift
     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
 ```
 
-4. When you want to hide the activity:
+ * When you want to hide the activity:
 
 ```swift
     SwiftSpinner.hide()
@@ -50,7 +50,7 @@ There aren’t any requirements per se. As long as you got `UIKit` imported the 
 
 ## Installation
 
-SwiftSpinner is available through [CocoaPods](http://cocoapods.org). To install
+`SwiftSpinner` is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```
@@ -59,11 +59,13 @@ it, simply add the following line to your Podfile:
 
 *NB*: Currently Swift Cocoapods work only with 0.36 pre-release version. If you want to learn how to install a Swift cocoapod read more here: http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/
 
+In case you don’t want to use CocoaPods - just copy the file **SwiftSpinner/SwiftSpinner.swift** to your Xcode project.
+
 ## Author
 
-Marin Todorov, http://www.touch-code-magazine.com/about
+**Marin Todorov**, http://www.touch-code-magazine.com/about
 
 ## License
 
-SwiftSpinner is available under the MIT license. See the LICENSE file for more info.
+`SwiftSpinner` is available under the MIT license. See the LICENSE file for more info.
 

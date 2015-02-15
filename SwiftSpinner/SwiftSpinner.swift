@@ -94,7 +94,7 @@ public class SwiftSpinner: UIView {
         let window = UIApplication.sharedApplication().windows.first as UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
-        spinner.frame = window.frame
+        spinner.updateFrame()
         
         if spinner.superview == nil {
             //show the spinner
@@ -265,6 +265,11 @@ public class SwiftSpinner: UIView {
         })
     }
     
+    private func updateFrame() {
+        let window = UIApplication.sharedApplication().windows.first as UIWindow
+        SwiftSpinner.sharedInstance.frame = window.frame
+    }
+    
     // MARK: - Util methods
     
     func delay(#seconds: Double, completion:()->()) {
@@ -273,6 +278,11 @@ public class SwiftSpinner: UIView {
         dispatch_after(popTime, dispatch_get_main_queue()) {
             completion()
         }
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        updateFrame()
     }
 
 }

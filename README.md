@@ -14,7 +14,7 @@ This is how the activity looks like (from the demo app):
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first. That’ll run the demo program which shows you how the spinner looks like and what it can do. 
+To run the example project, clone the repo, and run `pod install` from the DemoApp directory first. That’ll run the demo program which shows you how the spinner looks like and what it can do. 
 
 #### Code samples
 

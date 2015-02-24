@@ -41,7 +41,7 @@ public class SwiftSpinner: UIView {
         
         let titleScale: CGFloat = 0.85
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 22.0)
+        titleLabel.font = defaultTitleFont
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .Center
         titleLabel.lineBreakMode = .ByWordWrapping
@@ -90,7 +90,7 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, if visible only update the title
     //
     public class func show(title: String, animated: Bool = true) {
-
+        
         let window = UIApplication.sharedApplication().windows.first as UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
@@ -108,9 +108,21 @@ public class SwiftSpinner: UIView {
         
         spinner.title = title
         spinner.animating = animated
-
+        
     }
-
+    
+    //
+    // Show the spinner activity on screen with custom font, if visible only update the title
+    // Note that the custom font will be discarded when hiding the spinner
+    // To permanently change the title font, set the defaultTitleFont property
+    //
+    public class func show(title: String, withFont font: UIFont, animated: Bool = true) {
+        let spinner = SwiftSpinner.sharedInstance
+        spinner.titleLabel.font = font
+        
+        show(title, animated: true)
+    }
+    
     //
     // Hide the spinner
     //
@@ -126,9 +138,19 @@ public class SwiftSpinner: UIView {
             }, completion: {_ in
                 spinner.alpha = 1.0
                 spinner.removeFromSuperview()
+                spinner.titleLabel.font = spinner.defaultTitleFont
         })
         
         spinner.animating = false
+    }
+    
+    //
+    // Set the default title font
+    //
+    public class func setDefaultTitleFont(font: UIFont?) {
+        let spinner = SwiftSpinner.sharedInstance
+        spinner.defaultTitleFont = font
+        spinner.titleLabel.font = font
     }
     
     //
@@ -196,7 +218,7 @@ public class SwiftSpinner: UIView {
             }
         }
     }
-
+    
     // MARK: - Private interface
     
     //
@@ -209,6 +231,7 @@ public class SwiftSpinner: UIView {
     private var vibrancyView: UIVisualEffectView!
     
     lazy var titleLabel = UILabel()
+    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)
     let frameSize = CGSize(width: 200.0, height: 200.0)
     
     private lazy var outerCircleView = UIView()
@@ -220,7 +243,7 @@ public class SwiftSpinner: UIView {
     required public init(coder aDecoder: NSCoder) {
         fatalError("Not coder compliant")
     }
-
+    
     private var currentOuterRotation: CGFloat = 0.0
     private var currentInnerRotation: CGFloat = 0.1
     
@@ -284,5 +307,5 @@ public class SwiftSpinner: UIView {
         super.layoutSubviews()
         updateFrame()
     }
-
+    
 }

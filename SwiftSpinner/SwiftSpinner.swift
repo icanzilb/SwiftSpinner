@@ -108,7 +108,6 @@ public class SwiftSpinner: UIView {
         
         spinner.title = title
         spinner.animating = animated
-        
     }
     
     //
@@ -129,7 +128,7 @@ public class SwiftSpinner: UIView {
     public class func hide() {
         let spinner = SwiftSpinner.sharedInstance
         
-        if  spinner.superview == nil {
+        if spinner.superview == nil {
             return
         }
         
@@ -139,6 +138,7 @@ public class SwiftSpinner: UIView {
                 spinner.alpha = 1.0
                 spinner.removeFromSuperview()
                 spinner.titleLabel.font = spinner.defaultTitleFont
+                spinner.titleLabel.text = nil
         })
         
         spinner.animating = false

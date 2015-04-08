@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SwiftSpinner"
-  s.version          = "0.6.0"
+  s.version          = "0.6.1"
   s.summary          = "A beautiful activity indicator written in Swift"
   s.description      = <<-DESC
   	SwiftSpinner is an extra beautiful activity indicator with plain and bold style fitting iOS 8 design very well. It uses dynamic blur and translucency 	to overlay the current screen contents and display an activity indicator with text (or the so called “spinner”).
@@ -27,11 +27,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'SwiftSpinner'
-  #s.resource_bundles = {
-  #  'SwiftSpinner' => ['Pod/Assets/*.png']
-  #}
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  
 end

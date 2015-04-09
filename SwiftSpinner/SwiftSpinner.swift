@@ -91,7 +91,7 @@ public class SwiftSpinner: UIView {
     //
     public class func show(title: String, animated: Bool = true) {
         
-        let window = UIApplication.sharedApplication().windows.first as UIWindow
+        let window = UIApplication.sharedApplication().windows.first as! UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.updateFrame()
@@ -262,7 +262,7 @@ public class SwiftSpinner: UIView {
             self.outerCircleView.transform = CGAffineTransformMakeRotation(self.currentOuterRotation)
             }, completion: {_ in
                 let waitDuration = Double(Float(arc4random()) /  Float(UInt32.max)) * 1.0 + 1.0
-                self.delay(seconds: waitDuration, {
+                self.delay(seconds: waitDuration, completion: {
                     if self.animating {
                         self.spinOuter()
                     }
@@ -280,7 +280,7 @@ public class SwiftSpinner: UIView {
             self.currentInnerRotation += CGFloat(M_PI_4)
             self.innerCircleView.transform = CGAffineTransformMakeRotation(self.currentInnerRotation)
             }, completion: {_ in
-                self.delay(seconds: 0.5, {
+                self.delay(seconds: 0.5, completion: {
                     if self.animating {
                         self.spinInner()
                     }
@@ -289,7 +289,7 @@ public class SwiftSpinner: UIView {
     }
     
     private func updateFrame() {
-        let window = UIApplication.sharedApplication().windows.first as UIWindow
+        let window = UIApplication.sharedApplication().windows.first as! UIWindow
         SwiftSpinner.sharedInstance.frame = window.frame
     }
     

@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 14.0, completion: {
+            SwiftSpinner.setDefaultTitleFont(UIFont(name: "Chalkduster", size: 18.0))
             SwiftSpinner.show("Retrying to authenticate")
         })
         

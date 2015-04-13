@@ -8,7 +8,7 @@ SwiftSpinner is an extra beautiful activity indicator with plain and bold style 
 
 - - -
 
-**Note:** SwiftSpinner is now **Swift 1.2** compatible, which means it runs only on iOS 8.2 or higher.
+**Note:** SwiftSpinner is now **Swift 1.2** compatible.
 - - -
 
 I developed it for my Swift app called **Doodle Doodle** and wanted to share it with everyone. Check the app here: http://doodledoodle.io

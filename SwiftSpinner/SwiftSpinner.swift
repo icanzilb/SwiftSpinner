@@ -125,7 +125,7 @@ public class SwiftSpinner: UIView {
     //
     // Hide the spinner
     //
-    public class func hide(completionFn: (Void -> Void)?) {
+    public class func hide(completion: (() -> Void)? = nil) {
         let spinner = SwiftSpinner.sharedInstance
         
         if spinner.superview == nil {
@@ -139,9 +139,8 @@ public class SwiftSpinner: UIView {
                 spinner.removeFromSuperview()
                 spinner.titleLabel.font = spinner.defaultTitleFont
                 spinner.titleLabel.text = nil
-                if let completion = completionFn {
-                    completion()
-                }
+                
+                completion?()
         })
         
         spinner.animating = false

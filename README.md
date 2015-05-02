@@ -49,6 +49,15 @@ The simple code to get `SwiftSpinner` running in your own app.
     SwiftSpinner.hide()
 ```
 
+In case you want to do something after the hiding animation completes you can provide a closure to the `hide()` method:
+
+```swift
+    SwiftSpinner.hide({
+      //do stuff
+    })
+```
+
+
 That's all. If you want to change the text of the current activity, just call `show(...)` again, this will animate the old text into the new text.
     
 ## Requirements

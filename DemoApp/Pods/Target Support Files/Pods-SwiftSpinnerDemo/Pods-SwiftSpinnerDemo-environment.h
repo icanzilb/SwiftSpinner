@@ -10,5 +10,5 @@
 #define COCOAPODS_POD_AVAILABLE_SwiftSpinner
 #define COCOAPODS_VERSION_MAJOR_SwiftSpinner 0
 #define COCOAPODS_VERSION_MINOR_SwiftSpinner 6
-#define COCOAPODS_VERSION_PATCH_SwiftSpinner 5
+#define COCOAPODS_VERSION_PATCH_SwiftSpinner 6
 

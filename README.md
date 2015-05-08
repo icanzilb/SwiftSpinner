@@ -73,8 +73,6 @@ it, simply add the following line to your Podfile:
     pod "SwiftSpinner"
 ```
 
-*NB*: Currently Swift Cocoapods work only with 0.36 pre-release version. If you want to learn how to install a Swift cocoapod read more here: http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/
-
 In case you don’t want to use CocoaPods - just copy the file **SwiftSpinner/SwiftSpinner.swift** to your Xcode project.
 
 ## Author

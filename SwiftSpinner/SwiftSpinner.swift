@@ -86,15 +86,19 @@ public class SwiftSpinner: UIView {
     
     // MARK: - Public interface
     
+    public lazy var titleLabel = UILabel()
+    public var subtitleLabel: UILabel?
+
     //
     // Show the spinner activity on screen, if visible only update the title
     //
-    public class func show(title: String, animated: Bool = true) {
+    public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
         
         let window = UIApplication.sharedApplication().windows.first as! UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
+        spinner.clearTapHandler()
         
         spinner.updateFrame()
         
@@ -106,81 +110,84 @@ public class SwiftSpinner: UIView {
             UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
                 spinner.alpha = 1.0
                 }, completion: nil)
+            
+            // Orientation change observer
+            NSNotificationCenter.defaultCenter().addObserver(
+                spinner,
+                selector: "updateFrame",
+                name: UIApplicationDidChangeStatusBarOrientationNotification,
+                object: nil)
         }
         
         spinner.title = title
         spinner.animating = animated
+        
+        return spinner
     }
     
     //
     // Show the spinner activity on screen, after delay. If new call to show, 
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    public class func showWithDelay(delay: Double, title: String, animated: Bool = true)
-    {
+    public class func showWithDelay(delay: Double, title: String, animated: Bool = true) -> SwiftSpinner {
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = {
-            
             SwiftSpinner.show(title, animated: animated)
-            
         }
         
-        spinner.delay(seconds: delay){ [weak spinner] in
-            
-            if let spinner = spinner
-            {
+        spinner.delay(seconds: delay) { [weak spinner] in
+            if let spinner = spinner {
                 spinner.showWithDelayBlock?()
             }
-            
         }
-    }
-    
-    //
-    // Show the spinner activity on screen with custom font, if visible only update the title
-    // Note that the custom font will be discarded when hiding the spinner
-    // To permanently change the title font, set the defaultTitleFont property
-    //
-    public class func show(title: String, withFont font: UIFont, animated: Bool = true) {
-        let spinner = SwiftSpinner.sharedInstance
-        spinner.titleLabel.font = font
         
-        show(title, animated: true)
+        return spinner
     }
     
     //
     // Hide the spinner
     //
     public class func hide(completion: (() -> Void)? = nil) {
+        
         let spinner = SwiftSpinner.sharedInstance
+
+        NSNotificationCenter.defaultCenter().removeObserver(spinner)
         
-        spinner.showWithDelayBlock = nil
-        
-        if spinner.superview == nil {
-            return
-        }
-        
-        UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-            spinner.alpha = 0.0
-            }, completion: {_ in
-                spinner.alpha = 1.0
-                spinner.removeFromSuperview()
-                spinner.titleLabel.font = spinner.defaultTitleFont
-                spinner.titleLabel.text = nil
-                
-                completion?()
+        dispatch_async(dispatch_get_main_queue(), {
+            spinner.showWithDelayBlock = nil
+            spinner.clearTapHandler()
+            
+            if spinner.superview == nil {
+                return
+            }
+            
+            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
+                spinner.alpha = 0.0
+                }, completion: {_ in
+                    spinner.alpha = 1.0
+                    spinner.removeFromSuperview()
+                    spinner.titleLabel.font = spinner.defaultTitleFont
+                    spinner.titleLabel.text = nil
+                    
+                    completion?()
+            })
+            
+            spinner.animating = false
         })
-        
-        spinner.animating = false
     }
     
     //
     // Set the default title font
     //
-    public class func setDefaultTitleFont(font: UIFont?) {
+    public class func setTitleFont(font: UIFont?) {
         let spinner = SwiftSpinner.sharedInstance
-        spinner.defaultTitleFont = font!
-        spinner.titleLabel.font = font
+
+        if let font = font {
+            spinner.titleLabel.font = font
+        } else {
+            spinner.titleLabel.font = spinner.defaultTitleFont
+        }
     }
     
     //
@@ -217,6 +224,10 @@ public class SwiftSpinner: UIView {
             titleLabel.center = vibrancyView.center
             outerCircleView.center = vibrancyView.center
             innerCircleView.center = vibrancyView.center
+            if let subtitle = subtitleLabel {
+                subtitle.bounds.size = subtitle.sizeThatFits(CGRectInset(bounds, 20.0, 0.0).size)
+                subtitle.center = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMaxY(bounds) - CGRectGetMidY(subtitle.bounds) - subtitle.font.pointSize)
+            }
         }
     }
     
@@ -249,6 +260,38 @@ public class SwiftSpinner: UIView {
         }
     }
     
+    //
+    // Tap handler
+    //
+    public func addTapHandler(tap: (()->()), subtitle subtitleText: String? = nil) {
+        clearTapHandler()
+        
+        userInteractionEnabled = true
+        vibrancyView.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("didTapSpinner")))
+        tapHandler = tap
+
+        if subtitleText != nil {
+            subtitleLabel = UILabel()
+            if let subtitle = subtitleLabel {
+                subtitle.text = subtitleText
+                subtitle.font = UIFont(name: defaultTitleFont.familyName, size: defaultTitleFont.pointSize * 0.8)
+                subtitle.textColor = UIColor.whiteColor()
+                subtitle.numberOfLines = 0
+                subtitle.textAlignment = .Center
+                subtitle.lineBreakMode = .ByWordWrapping
+                subtitle.bounds.size = subtitle.sizeThatFits(CGRectInset(bounds, 20.0, 0.0).size)
+                subtitle.center = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMaxY(bounds) - CGRectGetMidY(subtitle.bounds) - subtitle.font.pointSize)
+                vibrancyView.contentView.addSubview(subtitle)
+            }
+        }
+    }
+    
+    public func clearTapHandler() {
+        userInteractionEnabled = false
+        subtitleLabel?.removeFromSuperview()
+        tapHandler = nil
+    }
+    
     // MARK: - Private interface
     
     //
@@ -260,8 +303,7 @@ public class SwiftSpinner: UIView {
     private var blurView: UIVisualEffectView!
     private var vibrancyView: UIVisualEffectView!
     
-    lazy var titleLabel = UILabel()
-    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)
+    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
     let frameSize = CGSize(width: 200.0, height: 200.0)
     
     private lazy var outerCircleView = UIView()
@@ -320,7 +362,7 @@ public class SwiftSpinner: UIView {
         })
     }
     
-    private func updateFrame() {
+    public func updateFrame() {
         let window = UIApplication.sharedApplication().windows.first as! UIWindow
         SwiftSpinner.sharedInstance.frame = window.frame
     }
@@ -340,4 +382,9 @@ public class SwiftSpinner: UIView {
         updateFrame()
     }
     
+    // MARK: - Tap handler
+    private var tapHandler: (()->())?
+    func didTapSpinner() {
+        tapHandler?()
+    }
 }

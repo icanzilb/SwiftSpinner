@@ -27,9 +27,14 @@ class ViewController: UIViewController {
     }
     
     func demoSpinner() {
+
+        SwiftSpinner.showWithDelay(2.0, title: "It's taking longer than expected")
         
         delay(seconds: 2.0, completion: {
-            SwiftSpinner.show("Connecting \nto satellite...")
+            SwiftSpinner.show("Connecting \nto satellite...").addTapHandler({
+                println("tapped")
+                SwiftSpinner.hide()
+            }, subtitle: "Tap to hide while connecting! This will affect only the current operation.")
         })
         
         delay(seconds: 6.0, completion: {
@@ -41,7 +46,7 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 14.0, completion: {
-            SwiftSpinner.setDefaultTitleFont(UIFont(name: "Chalkduster", size: 18.0))
+            SwiftSpinner.setTitleFont(UIFont(name: "Futura", size: 22.0))
             SwiftSpinner.show("Retrying to authenticate")
         })
         
@@ -50,6 +55,7 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 21.0, completion: {
+            SwiftSpinner.setTitleFont(nil)
             SwiftSpinner.show("Connected", animated: false)
         })
         

@@ -32,13 +32,24 @@ public class SwiftSpinner: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        blurEffect = UIBlurEffect(style: blurEffectStyle)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        addSubview(blurView)
+        switch iosVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch){
+        case .OrderedSame, .OrderedDescending:
+            //iOS >= 8.0.0
+            blurEffect = UIBlurEffect(style: blurEffectStyle)
+            blurView = UIVisualEffectView(effect: blurEffect)
+            addSubview(blurView)
+            
+            vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blurEffect))
+            addSubview(vibrancyView)
+        case .OrderedAscending:
+            //iOS < 8.0.0
+            simpleView = UIView(frame: frame)
+            simpleView.alpha = 0.85
+            simpleView.backgroundColor = UIColor.redColor()
+            addSubview(simpleView)
+        }
         
-        vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blurEffect))
-        addSubview(vibrancyView)
-        
+        // Title Label
         let titleScale: CGFloat = 0.85
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
         titleLabel.font = defaultTitleFont
@@ -46,12 +57,10 @@ public class SwiftSpinner: UIView {
         titleLabel.textAlignment = .Center
         titleLabel.lineBreakMode = .ByWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textColor = UIColor.whiteColor()
         
-        vibrancyView.contentView.addSubview(titleLabel)
-        blurView.contentView.addSubview(vibrancyView)
-        
+        // Outer Circle
         outerCircleView.frame.size = frameSize
-        
         outerCircle.path = UIBezierPath(ovalInRect: CGRect(x: 0.0, y: 0.0, width: frameSize.width, height: frameSize.height)).CGPath
         outerCircle.lineWidth = 8.0
         outerCircle.strokeStart = 0.0
@@ -64,10 +73,8 @@ public class SwiftSpinner: UIView {
         outerCircle.strokeStart = 0.0
         outerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(outerCircleView)
-        
+        // Inner Circle
         innerCircleView.frame.size = frameSize
-        
         let innerCirclePadding: CGFloat = 12
         innerCircle.path = UIBezierPath(ovalInRect: CGRect(x: innerCirclePadding, y: innerCirclePadding, width: frameSize.width - 2*innerCirclePadding, height: frameSize.height - 2*innerCirclePadding)).CGPath
         innerCircle.lineWidth = 4.0
@@ -81,7 +88,19 @@ public class SwiftSpinner: UIView {
         innerCircle.strokeStart = 0.0
         innerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(innerCircleView)
+        switch iosVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch){
+        case .OrderedSame, .OrderedDescending:
+            //iOS >= 8.0.0
+            vibrancyView.contentView.addSubview(titleLabel)
+            blurView.contentView.addSubview(vibrancyView)
+            vibrancyView.contentView.addSubview(outerCircleView)
+            vibrancyView.contentView.addSubview(innerCircleView)
+        case .OrderedAscending:
+            //iOS < 8.0.0
+            simpleView.addSubview(titleLabel)
+            simpleView.addSubview(outerCircleView)
+            simpleView.addSubview(innerCircleView)
+        }
     }
     
     // MARK: - Public interface
@@ -151,7 +170,7 @@ public class SwiftSpinner: UIView {
     //
     // Hide the spinner
     //
-    public class func hide(completion: (() -> Void)? = nil) {
+    public class func hide() {
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
@@ -167,8 +186,6 @@ public class SwiftSpinner: UIView {
                 spinner.removeFromSuperview()
                 spinner.titleLabel.font = spinner.defaultTitleFont
                 spinner.titleLabel.text = nil
-                
-                completion?()
         })
         
         spinner.animating = false
@@ -212,11 +229,22 @@ public class SwiftSpinner: UIView {
             if frame == CGRect.zeroRect {
                 return
             }
-            blurView.frame = bounds
-            vibrancyView.frame = blurView.bounds
-            titleLabel.center = vibrancyView.center
-            outerCircleView.center = vibrancyView.center
-            innerCircleView.center = vibrancyView.center
+            
+            switch iosVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch){
+            case .OrderedSame, .OrderedDescending:
+                //iOS >= 8.0.0
+                blurView.frame = bounds
+                vibrancyView.frame = blurView.bounds
+                titleLabel.center = vibrancyView.center
+                outerCircleView.center = vibrancyView.center
+                innerCircleView.center = vibrancyView.center
+            case .OrderedAscending:
+                //iOS < 8.0.0
+                simpleView.frame = bounds
+                titleLabel.center = simpleView.center
+                outerCircleView.center = simpleView.center
+                innerCircleView.center = simpleView.center
+            }
         }
     }
     
@@ -252,9 +280,17 @@ public class SwiftSpinner: UIView {
     // MARK: - Private interface
     
     //
+    // iOS version
+    //
+    let iosVersion = UIDevice.currentDevice().systemVersion
+    
+    
+    
+    //
     // layout elements
     //
     
+    private var simpleView: UIView!
     private var blurEffectStyle: UIBlurEffectStyle = .Dark
     private var blurEffect: UIBlurEffect!
     private var blurView: UIVisualEffectView!

@@ -94,6 +94,8 @@ public class SwiftSpinner: UIView {
         let window = UIApplication.sharedApplication().windows.first as! UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
+        spinner.showWithDelayBlock = nil
+        
         spinner.updateFrame()
         
         if spinner.superview == nil {
@@ -108,6 +110,30 @@ public class SwiftSpinner: UIView {
         
         spinner.title = title
         spinner.animating = animated
+    }
+    
+    //
+    // Show the spinner activity on screen, after delay. If new call to show, 
+    // showWithDelay or hide is maked before execution this call is discarded
+    //
+    public class func showWithDelay(delay: Double, title: String, animated: Bool = true)
+    {
+        let spinner = SwiftSpinner.sharedInstance
+        
+        spinner.showWithDelayBlock = {
+            
+            SwiftSpinner.show(title, animated: animated)
+            
+        }
+        
+        spinner.delay(seconds: delay){ [weak spinner] in
+            
+            if let spinner = spinner
+            {
+                spinner.showWithDelayBlock?()
+            }
+            
+        }
     }
     
     //
@@ -127,6 +153,8 @@ public class SwiftSpinner: UIView {
     //
     public class func hide(completion: (() -> Void)? = nil) {
         let spinner = SwiftSpinner.sharedInstance
+        
+        spinner.showWithDelayBlock = nil
         
         if spinner.superview == nil {
             return
@@ -241,6 +269,8 @@ public class SwiftSpinner: UIView {
     
     private let outerCircle = CAShapeLayer()
     private let innerCircle = CAShapeLayer()
+    
+    private var showWithDelayBlock: (()->())?
     
     required public init(coder aDecoder: NSCoder) {
         fatalError("Not coder compliant")

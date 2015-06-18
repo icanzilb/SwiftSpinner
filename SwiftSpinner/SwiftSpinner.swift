@@ -151,7 +151,7 @@ public class SwiftSpinner: UIView {
     //
     public class func setDefaultTitleFont(font: UIFont?) {
         let spinner = SwiftSpinner.sharedInstance
-        spinner.defaultTitleFont = font
+        spinner.defaultTitleFont = font!
         spinner.titleLabel.font = font
     }
     

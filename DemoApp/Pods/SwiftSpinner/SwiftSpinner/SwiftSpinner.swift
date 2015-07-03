@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import Spring
 
 public class SwiftSpinner: UIView {
     
@@ -95,13 +94,7 @@ public class SwiftSpinner: UIView {
     //
     public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
         
-        let window = UIApplication.sharedApplication().windows.first! as UIWindow
-        for subView in window.subviews {
-            if subView.conformsToProtocol(Springable) {
-                subView.userInteractionEnabled = false
-            }
-        }
-        window.endEditing(true)
+        let window = UIApplication.sharedApplication().windows.first as! UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
@@ -112,8 +105,7 @@ public class SwiftSpinner: UIView {
         if spinner.superview == nil {
             //show the spinner
             spinner.alpha = 0.0
-//            window.addSubview(spinner)
-            window.subviews[0].addSubview(spinner)
+            window.addSubview(spinner)
             
             UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
                 spinner.alpha = 1.0
@@ -182,12 +174,6 @@ public class SwiftSpinner: UIView {
             })
             
             spinner.animating = false
-            let window = UIApplication.sharedApplication().windows.first! as UIWindow
-            for subView in window.subviews {
-                if subView.conformsToProtocol(Springable) {
-                    subView.userInteractionEnabled = false
-                }
-            }
         })
     }
     
@@ -217,7 +203,7 @@ public class SwiftSpinner: UIView {
                 spinner.titleLabel.alpha = 0.2
                 }, completion: {_ in
                     spinner.titleLabel.text = self.title
-                    UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: [], animations: {
+                    UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: nil, animations: {
                         spinner.titleLabel.transform = CGAffineTransformIdentity
                         spinner.titleLabel.alpha = 1.0
                         }, completion: nil)
@@ -343,10 +329,9 @@ public class SwiftSpinner: UIView {
         
         let duration = Double(Float(arc4random()) /  Float(UInt32.max)) * 2.0 + 1.5
         let randomRotation = Double(Float(arc4random()) /  Float(UInt32.max)) * M_PI_4 + M_PI_4
-
+        
         //outer circle
-
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: nil, animations: {
             self.currentOuterRotation -= CGFloat(randomRotation)
             self.outerCircleView.transform = CGAffineTransformMakeRotation(self.currentOuterRotation)
             }, completion: {_ in
@@ -365,7 +350,7 @@ public class SwiftSpinner: UIView {
         }
         
         //inner circle
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: nil, animations: {
             self.currentInnerRotation += CGFloat(M_PI_4)
             self.innerCircleView.transform = CGAffineTransformMakeRotation(self.currentInnerRotation)
             }, completion: {_ in
@@ -378,13 +363,13 @@ public class SwiftSpinner: UIView {
     }
     
     public func updateFrame() {
-        let window = UIApplication.sharedApplication().windows.first! as UIWindow
+        let window = UIApplication.sharedApplication().windows.first as! UIWindow
         SwiftSpinner.sharedInstance.frame = window.frame
     }
     
     // MARK: - Util methods
     
-    func delay(seconds seconds: Double, completion:()->()) {
+    func delay(#seconds: Double, completion:()->()) {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
         
         dispatch_after(popTime, dispatch_get_main_queue()) {

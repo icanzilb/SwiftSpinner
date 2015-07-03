@@ -1,5 +1,5 @@
 framework module SwiftSpinner {
-  umbrella header "Pods-SwiftSpinnerDemo-SwiftSpinner-umbrella.h"
+  umbrella header "SwiftSpinner-umbrella.h"
 
   export *
   module * { export * }

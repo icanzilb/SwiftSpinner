@@ -1,14 +1,10 @@
 PODS:
-  - SwiftSpinner (0.6.6)
+  - SwiftSpinner (0.7.0)
 
 DEPENDENCIES:
-  - SwiftSpinner (from `..`)
-
-EXTERNAL SOURCES:
-  SwiftSpinner:
-    :path: ..
+  - SwiftSpinner
 
 SPEC CHECKSUMS:
-  SwiftSpinner: a083775a841547fe4ffe03bbfdd84cd43a10c38f
+  SwiftSpinner: 034bb8b00675b3e4f4c97531fa9af3f550462192
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.38.0.beta.1

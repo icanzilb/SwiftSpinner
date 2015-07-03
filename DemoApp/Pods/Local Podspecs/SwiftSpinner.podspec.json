@@ -1,6 +1,6 @@
 {
   "name": "SwiftSpinner",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "summary": "A beautiful activity indicator written in Swift",
   "description": "  \tSwiftSpinner is an extra beautiful activity indicator with plain and bold style fitting iOS 8 design very well. It uses dynamic blur and translucency \tto overlay the current screen contents and display an activity indicator with text (or the so called “spinner”).\n\n  \tI developed it for my Swift app called **Doodle Doodle** (http://doodledoodle.io) and wanted to share it with everyone\n",
   "homepage": "https://github.com/icanzilb/SwiftSpinner",
@@ -11,7 +11,7 @@
   },
   "source": {
     "git": "https://github.com/icanzilb/SwiftSpinner.git",
-    "tag": "0.6.6"
+    "tag": "0.7.0"
   },
   "social_media_url": "https://twitter.com/icanzilb",
   "platforms": {

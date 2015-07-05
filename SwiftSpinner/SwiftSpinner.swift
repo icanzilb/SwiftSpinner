@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import Spring
 
 public class SwiftSpinner: UIView {
     
@@ -96,11 +95,6 @@ public class SwiftSpinner: UIView {
     public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
         
         let window = UIApplication.sharedApplication().windows.first! as UIWindow
-        for subView in window.subviews {
-            if subView.conformsToProtocol(Springable) {
-                subView.userInteractionEnabled = false
-            }
-        }
         window.endEditing(true)
         let spinner = SwiftSpinner.sharedInstance
         
@@ -182,12 +176,6 @@ public class SwiftSpinner: UIView {
             })
             
             spinner.animating = false
-            let window = UIApplication.sharedApplication().windows.first! as UIWindow
-            for subView in window.subviews {
-                if subView.conformsToProtocol(Springable) {
-                    subView.userInteractionEnabled = false
-                }
-            }
         })
     }
     

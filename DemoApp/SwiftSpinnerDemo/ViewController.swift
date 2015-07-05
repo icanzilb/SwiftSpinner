@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import SwiftSpinner
 
 class ViewController: UIViewController {
     

@@ -12,7 +12,7 @@ import SwiftSpinner
 
 class ViewController: UIViewController {
     
-    func delay(#seconds: Double, completion:()->()) {
+    func delay(seconds seconds: Double, completion:()->()) {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
         
         dispatch_after(popTime, dispatch_get_main_queue()) {
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         
         delay(seconds: 2.0, completion: {
             SwiftSpinner.show("Connecting \nto satellite...").addTapHandler({
-                println("tapped")
+                print("tapped")
                 SwiftSpinner.hide()
             }, subtitle: "Tap to hide while connecting! This will affect only the current operation.")
         })

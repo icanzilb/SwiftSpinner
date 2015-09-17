@@ -8,7 +8,7 @@ SwiftSpinner is an extra beautiful activity indicator with plain and bold style 
 
 - - -
 
-**Note:** SwiftSpinner is now **Swift 1.2** compatible.
+**Note:** SwiftSpinner is now **Swift 2.0** compatible.
 - - -
 
 I developed it for my Swift app called **Doodle Doodle** and wanted to share it with everyone. Check the app here: http://doodledoodle.io
@@ -142,7 +142,6 @@ iOS Animations by Emails Newsletter, Author</a>
 </td>
 </tr>
 </table>
-
 
 ## License
 

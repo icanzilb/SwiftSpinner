@@ -184,6 +184,8 @@
 		9C6D4F051A6BFE8500B10961 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Underplot ltd.";
 				TargetAttributes = {

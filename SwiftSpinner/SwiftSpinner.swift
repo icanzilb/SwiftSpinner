@@ -18,7 +18,7 @@ public class SwiftSpinner: UIView {
     //
     public class var sharedInstance: SwiftSpinner {
         struct Singleton {
-            static let instance = SwiftSpinner(frame: CGRect.zero)
+            static let instance = SwiftSpinner(frame: CGRect.zeroRect)
         }
         return Singleton.instance
     }
@@ -222,7 +222,7 @@ public class SwiftSpinner: UIView {
     //
     public override var frame: CGRect {
         didSet {
-            if frame == CGRect.zero {
+            if frame == CGRect.zeroRect {
                 return
             }
             blurView.frame = bounds

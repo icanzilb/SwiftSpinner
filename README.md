@@ -43,6 +43,12 @@ The simple code to get `SwiftSpinner` running in your own app.
     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
 ```
 
+ * If you want to add the activity view to a specific superview:
+
+```swift
+    SwiftSpinner.show("Connecting to satellite...", animated: true, superview: self.view)
+```
+
  * When you want to hide the activity:
 
 ```swift

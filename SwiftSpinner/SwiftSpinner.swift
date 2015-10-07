@@ -98,9 +98,9 @@ public class SwiftSpinner: UIView {
     //
     // Show the spinner activity on screen, if visible only update the title
     //
-    public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func show(title: String, animated: Bool = true, superview: UIView? = nil) -> SwiftSpinner {
         
-        let window = UIApplication.sharedApplication().windows.first!
+        let superview = superview ?? UIApplication.sharedApplication().windows.first!
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
@@ -111,7 +111,7 @@ public class SwiftSpinner: UIView {
         if spinner.superview == nil {
             //show the spinner
             spinner.alpha = 0.0
-            window.addSubview(spinner)
+            superview.addSubview(spinner)
             
             UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
                 spinner.alpha = 1.0
@@ -135,11 +135,11 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    public class func showWithDelay(delay: Double, title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func showWithDelay(delay: Double, title: String, animated: Bool = true, superview: UIView? = nil) -> SwiftSpinner {
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = {
-            SwiftSpinner.show(title, animated: animated)
+            SwiftSpinner.show(title, animated: animated, superview: superview)
         }
         
         spinner.delay(seconds: delay) { [weak spinner] in

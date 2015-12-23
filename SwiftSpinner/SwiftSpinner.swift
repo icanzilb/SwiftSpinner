@@ -90,43 +90,59 @@ public class SwiftSpinner: UIView {
         return self
     }
     
+    private static let DEFAULT_LEVEL = SpinnerLevel.Normal
+    
+    private var lastLevel = DEFAULT_LEVEL
+    
     // MARK: - Public interface
     
     public lazy var titleLabel = UILabel()
     public var subtitleLabel: UILabel?
     
+    public enum SpinnerLevel: Int, Comparable {
+        case Low = 1
+        case Normal = 2
+        case High = 3
+    }
+    
     //
     // Show the spinner activity on screen, if visible only update the title
     //
-    public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func show(title: String, animated: Bool = true, level: SpinnerLevel = .Normal) -> SwiftSpinner {
         
         let window = UIApplication.sharedApplication().windows.first!
         let spinner = SwiftSpinner.sharedInstance
         
-        spinner.showWithDelayBlock = nil
-        spinner.clearTapHandler()
-        
-        spinner.updateFrame()
-        
-        if spinner.superview == nil {
-            //show the spinner
-            spinner.alpha = 0.0
-            window.addSubview(spinner)
+        if spinner.lastLevel <= level
+        {
+            //new level should override
+            spinner.lastLevel = level
             
-            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.alpha = 1.0
-                }, completion: nil)
+            spinner.showWithDelayBlock = nil
+            spinner.clearTapHandler()
             
-            // Orientation change observer
-            NSNotificationCenter.defaultCenter().addObserver(
-                spinner,
-                selector: "updateFrame",
-                name: UIApplicationDidChangeStatusBarOrientationNotification,
-                object: nil)
+            spinner.updateFrame()
+            
+            if spinner.superview == nil {
+                //show the spinner
+                spinner.alpha = 0.0
+                window.addSubview(spinner)
+                
+                UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
+                    spinner.alpha = 1.0
+                    }, completion: nil)
+                
+                // Orientation change observer
+                NSNotificationCenter.defaultCenter().addObserver(
+                    spinner,
+                    selector: "updateFrame",
+                    name: UIApplicationDidChangeStatusBarOrientationNotification,
+                    object: nil)
+            }
+            
+            spinner.title = title
+            spinner.animating = animated
         }
-        
-        spinner.title = title
-        spinner.animating = animated
         
         return spinner
     }
@@ -135,16 +151,21 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    public class func showWithDelay(delay: Double, title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func showWithDelay(delay: Double, title: String, animated: Bool = true, level: SpinnerLevel = .Normal) -> SwiftSpinner {
         let spinner = SwiftSpinner.sharedInstance
         
-        spinner.showWithDelayBlock = {
-            SwiftSpinner.show(title, animated: animated)
-        }
-        
-        spinner.delay(seconds: delay) { [weak spinner] in
-            if let spinner = spinner {
-                spinner.showWithDelayBlock?()
+        if spinner.lastLevel <= level {
+            
+            spinner.lastLevel = level
+            
+            spinner.showWithDelayBlock = {
+                SwiftSpinner.show(title, animated: animated)
+            }
+            
+            spinner.delay(seconds: delay) { [weak spinner] in
+                if let spinner = spinner {
+                    spinner.showWithDelayBlock?()
+                }
             }
         }
         
@@ -152,35 +173,47 @@ public class SwiftSpinner: UIView {
     }
     
     //
-    // Hide the spinner
+    // Hide the spinner(keeping old interface)
     //
     public class func hide(completion: (() -> Void)? = nil) {
+        SwiftSpinner.hide(DEFAULT_LEVEL, completion: completion)
+    }
+    
+    //
+    // Hide the spinner
+    //
+    public class func hide(level: SpinnerLevel, completion: (() -> Void)? = nil) {
         
         let spinner = SwiftSpinner.sharedInstance
         
-        NSNotificationCenter.defaultCenter().removeObserver(spinner)
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            spinner.showWithDelayBlock = nil
-            spinner.clearTapHandler()
+        if spinner.lastLevel <= level {
             
-            if spinner.superview == nil {
-                return
-            }
+            spinner.lastLevel = DEFAULT_LEVEL
             
-            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.alpha = 0.0
-                }, completion: {_ in
-                    spinner.alpha = 1.0
-                    spinner.removeFromSuperview()
-                    spinner.titleLabel.font = spinner.defaultTitleFont
-                    spinner.titleLabel.text = nil
-                    
-                    completion?()
+            NSNotificationCenter.defaultCenter().removeObserver(spinner)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                spinner.showWithDelayBlock = nil
+                spinner.clearTapHandler()
+                
+                if spinner.superview == nil {
+                    return
+                }
+                
+                UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
+                    spinner.alpha = 0.0
+                    }, completion: {_ in
+                        spinner.alpha = 1.0
+                        spinner.removeFromSuperview()
+                        spinner.titleLabel.font = spinner.defaultTitleFont
+                        spinner.titleLabel.text = nil
+                        
+                        completion?()
+                })
+                
+                spinner.animating = false
             })
-            
-            spinner.animating = false
-        })
+        }
     }
     
     //
@@ -401,4 +434,8 @@ public class SwiftSpinner: UIView {
     func didTapSpinner() {
         tapHandler?()
     }
+}
+
+public func <<T: RawRepresentable where T.RawValue: Comparable>(a: T, b: T) -> Bool {
+    return a.rawValue < b.rawValue
 }

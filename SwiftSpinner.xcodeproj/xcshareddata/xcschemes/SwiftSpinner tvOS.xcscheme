@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D20C830A1C77C49D002CA000"
-               BuildableName = "SwiftSpinner tvOS.framework"
+               BuildableName = "SwiftSpinner.framework"
                BlueprintName = "SwiftSpinner tvOS"
                ReferencedContainer = "container:SwiftSpinner.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D20C830A1C77C49D002CA000"
-            BuildableName = "SwiftSpinner tvOS.framework"
+            BuildableName = "SwiftSpinner.framework"
             BlueprintName = "SwiftSpinner tvOS"
             ReferencedContainer = "container:SwiftSpinner.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D20C830A1C77C49D002CA000"
-            BuildableName = "SwiftSpinner tvOS.framework"
+            BuildableName = "SwiftSpinner.framework"
             BlueprintName = "SwiftSpinner tvOS"
             ReferencedContainer = "container:SwiftSpinner.xcodeproj">
          </BuildableReference>

@@ -123,7 +123,6 @@ public class SwiftSpinner: UIView {
             
             guard let containerView = containerView() else {
                 fatalError("\n`UIApplication.keyWindow` is `nil`. If you're trying to show a spinner from your view controller's `viewDidLoad` method, do that from `viewWillAppear` instead. Alternatively use `useContainerView` to set a view where the spinner should show")
-                return spinner
             }
             
             containerView.addSubview(spinner)
@@ -132,12 +131,14 @@ public class SwiftSpinner: UIView {
                 spinner.alpha = 1.0
                 }, completion: nil)
             
+            #if os(iOS)
             // Orientation change observer
             NSNotificationCenter.defaultCenter().addObserver(
                 spinner,
-                selector: "updateFrame",
+                selector: #selector(SwiftSpinner.updateFrame),
                 name: UIApplicationDidChangeStatusBarOrientationNotification,
                 object: nil)
+            #endif
         }
         
         spinner.title = title

@@ -20,15 +20,15 @@ class ViewController: UIViewController {
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.demoSpinner()
     }
     
     func demoSpinner() {
 
-        SwiftSpinner.showWithDelay(2.0, title: "It's taking longer than expected")
+        SwiftSpinner.showWithDelay(1.0, title: "Connecting...", animated: true)
         
         delay(seconds: 2.0, completion: {
             SwiftSpinner.show("Connecting \nto satellite...").addTapHandler({
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 6.0, completion: {
-            SwiftSpinner.showWithDuration(2.0, title: "Authenticating user account")
+            SwiftSpinner.show("Authenticating user account")
         })
         
         delay(seconds: 10.0, completion: {
@@ -56,11 +56,7 @@ class ViewController: UIViewController {
         
         delay(seconds: 21.0, completion: {
             SwiftSpinner.setTitleFont(nil)
-            SwiftSpinner.show("Connected", animated: false)
-        })
-        
-        delay(seconds: 22.0, completion: {
-            SwiftSpinner.hide()
+            SwiftSpinner.showWithDuration(2.0, title: "Connected", animated: false)
         })
         
         delay(seconds: 28.0, completion: {

@@ -133,39 +133,13 @@ public class SwiftSpinner: UIView {
     //
     // Show the spinner activity on screen with duration, if visible only update the title
     //
-    public class func showForDuration(duration:Double, title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func showWithDuration(duration: Double, title: String, animated: Bool = true) -> SwiftSpinner {
         
-        let window = UIApplication.sharedApplication().windows.first!
-        let spinner = SwiftSpinner.sharedInstance
-        
-        spinner.showWithDelayBlock = nil
-        spinner.clearTapHandler()
-        
-        spinner.updateFrame()
-        
-        if spinner.superview == nil {
-            //show the spinner
-            spinner.alpha = 0.0
-            window.addSubview(spinner)
-            
-            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.alpha = 1.0
-                }, completion: nil)
-            
-            // Orientation change observer
-            NSNotificationCenter.defaultCenter().addObserver(
-                spinner,
-                selector: "updateFrame",
-                name: UIApplicationDidChangeStatusBarOrientationNotification,
-                object: nil)
-        }
-        
-        spinner.title = title
-        spinner.animating = animated
-        
-        spinner.delay(seconds: duration) { () -> () in
-            
-            self.hide()
+        let spinner = SwiftSpinner.show(title, animated: animated)
+        spinner.delay(seconds: duration) {[weak spinner] in
+            if let spinner = spinner {
+                SwiftSpinner.hide()
+            }
         }
         
         return spinner
@@ -182,7 +156,7 @@ public class SwiftSpinner: UIView {
             SwiftSpinner.show(title, animated: animated)
         }
         
-        spinner.delay(seconds: delay) { [weak spinner] in
+        spinner.delay(seconds: delay) {[weak spinner] in
             if let spinner = spinner {
                 spinner.showWithDelayBlock?()
             }

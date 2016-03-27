@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 6.0, completion: {
-            SwiftSpinner.show("Authenticating user account")
+            SwiftSpinner.showWithDuration(2.0, title: "Authenticating user account")
         })
         
         delay(seconds: 10.0, completion: {

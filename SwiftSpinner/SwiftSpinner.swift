@@ -177,12 +177,13 @@ public class SwiftSpinner: UIView {
     //
     // Hide the spinner
     //
-    public class func hide(completion: (() -> Void)? = nil, cancelScheduledSpinners: Bool = true) {
+    public static var hideCancelsScheduledSpinners = true
+    public class func hide(completion: (() -> Void)? = nil) {
         
         let spinner = SwiftSpinner.sharedInstance
         
         NSNotificationCenter.defaultCenter().removeObserver(spinner)
-        if cancelScheduledSpinners {
+        if hideCancelsScheduledSpinners {
             delayedTokens.removeAll()
         }
         

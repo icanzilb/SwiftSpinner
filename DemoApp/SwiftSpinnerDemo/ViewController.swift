@@ -28,6 +28,9 @@ class ViewController: UIViewController {
     
     func demoSpinner() {
 
+        SwiftSpinner.showWithDelay(0.5, title: "Shouldn't see this one", animated: true)
+        SwiftSpinner.hide()
+        
         SwiftSpinner.showWithDelay(1.0, title: "Connecting...", animated: true)
         
         delay(seconds: 2.0, completion: {

@@ -158,24 +158,33 @@ public class SwiftSpinner: UIView {
         return spinner
     }
     
+    private static var delayedTokens = [String]()
     //
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
     public class func showWithDelay(delay: Double, title: String, animated: Bool = true) {
+        let token = NSUUID().UUIDString
+        delayedTokens.append(token)
         SwiftSpinner.sharedInstance.delay(seconds: delay, completion: {
-            SwiftSpinner.show(title, animated: animated)
+            if let index = delayedTokens.indexOf(token) {
+                delayedTokens.removeAtIndex(index)
+                SwiftSpinner.show(title, animated: animated)
+            }
         })
     }
     
     //
     // Hide the spinner
     //
-    public class func hide(completion: (() -> Void)? = nil) {
+    public class func hide(completion: (() -> Void)? = nil, cancelScheduledSpinners: Bool = true) {
         
         let spinner = SwiftSpinner.sharedInstance
         
         NSNotificationCenter.defaultCenter().removeObserver(spinner)
+        if cancelScheduledSpinners {
+            delayedTokens.removeAll()
+        }
         
         dispatch_async(dispatch_get_main_queue(), {
             spinner.clearTapHandler()

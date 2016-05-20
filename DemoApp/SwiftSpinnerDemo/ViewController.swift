@@ -12,6 +12,8 @@ import SwiftSpinner
 
 class ViewController: UIViewController {
     
+    var progress = 0.0
+    
     func delay(seconds seconds: Double, completion:()->()) {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
         
@@ -62,9 +64,22 @@ class ViewController: UIViewController {
             SwiftSpinner.showWithDuration(2.0, title: "Connected", animated: false)
         })
         
-        delay(seconds: 28.0, completion: {
+        delay(seconds: 24.0) {
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.timerFire), userInfo: nil, repeats: true)
+        }
+        
+        delay(seconds: 34.0, completion: {
             self.demoSpinner()
         })
+    }
+    
+    func timerFire(timer: NSTimer) {
+        progress += (timer.timeInterval/5)
+        SwiftSpinner.showWithProgress(progress, title: "Downloading Data...")
+        if progress >= 1 {
+            timer.invalidate()
+            SwiftSpinner.showWithDuration(2.0, title: "Complete!", animated: false)
+        }
     }
     
 }

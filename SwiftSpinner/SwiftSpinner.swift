@@ -174,6 +174,15 @@ public class SwiftSpinner: UIView {
         })
     }
     
+    ///
+    /// Show the spinner with the outer circle representing progress (0 to 1)
+    ///
+    public class func showWithProgress(progress: Double, title: String) -> SwiftSpinner {
+        let spinner = SwiftSpinner.show(title, animated: false)
+        spinner.outerCircle.strokeEnd = CGFloat(progress)
+        return spinner
+    }
+    
     //
     // Hide the spinner
     //
@@ -226,20 +235,22 @@ public class SwiftSpinner: UIView {
     // The spinner title
     //
     public var title: String = "" {
-        didSet {
-            
-            let spinner = SwiftSpinner.sharedInstance
-            
-            UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.titleLabel.transform = CGAffineTransformMakeScale(0.75, 0.75)
-                spinner.titleLabel.alpha = 0.2
-                }, completion: {_ in
-                    spinner.titleLabel.text = self.title
-                    UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: [], animations: {
-                        spinner.titleLabel.transform = CGAffineTransformIdentity
-                        spinner.titleLabel.alpha = 1.0
-                        }, completion: nil)
-            })
+        didSet(newTitle) {
+            // Do not show spring animation if title hasn't changed.
+            if newTitle != title {
+                let spinner = SwiftSpinner.sharedInstance
+                
+                UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
+                    spinner.titleLabel.transform = CGAffineTransformMakeScale(0.75, 0.75)
+                    spinner.titleLabel.alpha = 0.2
+                    }, completion: {_ in
+                        spinner.titleLabel.text = self.title
+                        UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: [], animations: {
+                            spinner.titleLabel.transform = CGAffineTransformIdentity
+                            spinner.titleLabel.alpha = 1.0
+                            }, completion: nil)
+                })
+            }
         }
     }
     

@@ -133,7 +133,7 @@ public class SwiftSpinner: UIView {
             
             #if os(iOS)
                 // Orientation change observer
-                NotificationCenter.default().addObserver(
+                NotificationCenter.default.addObserver(
                     spinner,
                     selector: #selector(SwiftSpinner.updateFrame),
                     name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
@@ -182,7 +182,7 @@ public class SwiftSpinner: UIView {
         
         let spinner = SwiftSpinner.sharedInstance
         
-        NotificationCenter.default().removeObserver(spinner)
+        NotificationCenter.default.removeObserver(spinner)
         if hideCancelsScheduledSpinners {
             delayedTokens.removeAll()
         }

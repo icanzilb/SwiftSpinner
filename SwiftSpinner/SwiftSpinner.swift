@@ -152,7 +152,7 @@ public class SwiftSpinner: UIView {
     //
     public class func showWithDuration(_ duration: Double, title: String, animated: Bool = true) -> SwiftSpinner {
         let spinner = SwiftSpinner.show(title, animated: animated)
-        spinner.delay(seconds: duration) {
+        spinner.delay(duration) {
             SwiftSpinner.hide()
         }
         return spinner
@@ -166,7 +166,7 @@ public class SwiftSpinner: UIView {
     public class func showWithDelay(_ delay: Double, title: String, animated: Bool = true) {
         let token = UUID().uuidString
         delayedTokens.append(token)
-        SwiftSpinner.sharedInstance.delay(seconds: delay, completion: {
+        SwiftSpinner.sharedInstance.delay(delay, completion: {
             if let index = delayedTokens.index(of: token) {
                 delayedTokens.remove(at: index)
                 SwiftSpinner.show(title, animated: animated)
@@ -374,7 +374,7 @@ public class SwiftSpinner: UIView {
             self.outerCircleView.transform = CGAffineTransform(rotationAngle: self.currentOuterRotation)
             }, completion: {_ in
                 let waitDuration = Double(Float(arc4random()) /  Float(UInt32.max)) * 1.0 + 1.0
-                self.delay(seconds: waitDuration, completion: {
+                self.delay(waitDuration, completion: {
                     if self.animating {
                         self.spinOuter()
                     }
@@ -392,7 +392,7 @@ public class SwiftSpinner: UIView {
             self.currentInnerRotation += CGFloat(M_PI_4)
             self.innerCircleView.transform = CGAffineTransform(rotationAngle: self.currentInnerRotation)
             }, completion: {_ in
-                self.delay(seconds: 0.5, completion: {
+                self.delay(0.5, completion: {
                     if self.animating {
                         self.spinInner()
                     }
@@ -408,7 +408,7 @@ public class SwiftSpinner: UIView {
     
     // MARK: - Util methods
     
-    func delay(seconds: Double, completion:()->()) {
+    func delay(_ seconds: Double, completion:()->()) {
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
         DispatchQueue.main.after(when: popTime) {

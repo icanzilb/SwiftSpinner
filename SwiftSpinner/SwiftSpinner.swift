@@ -169,7 +169,7 @@ public class SwiftSpinner: UIView {
         SwiftSpinner.sharedInstance.delay(delay, completion: {
             if let index = delayedTokens.index(of: token) {
                 delayedTokens.remove(at: index)
-                SwiftSpinner.show(title, animated: animated)
+                _ = SwiftSpinner.show(title, animated: animated)
             }
         })
     }
@@ -408,7 +408,7 @@ public class SwiftSpinner: UIView {
     
     // MARK: - Util methods
     
-    func delay(_ seconds: Double, completion:()->()) {
+    func delay(_ seconds: Double, completion:@escaping ()->()) {
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
         DispatchQueue.main.asyncAfter(deadline: popTime) {

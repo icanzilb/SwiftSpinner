@@ -57,8 +57,8 @@ public class SwiftSpinner: UIView {
         outerCircle.strokeStart = 0.0
         outerCircle.strokeEnd = 0.45
         outerCircle.lineCap = kCALineCapRound
-        outerCircle.fillColor = UIColor.clear().cgColor
-        outerCircle.strokeColor = UIColor.white().cgColor
+        outerCircle.fillColor = UIColor.clear.cgColor
+        outerCircle.strokeColor = UIColor.white.cgColor
         outerCircleView.layer.addSublayer(outerCircle)
         
         outerCircle.strokeStart = 0.0
@@ -74,8 +74,8 @@ public class SwiftSpinner: UIView {
         innerCircle.strokeStart = 0.5
         innerCircle.strokeEnd = 0.9
         innerCircle.lineCap = kCALineCapRound
-        innerCircle.fillColor = UIColor.clear().cgColor
-        innerCircle.strokeColor = UIColor.gray().cgColor
+        innerCircle.fillColor = UIColor.clear.cgColor
+        innerCircle.strokeColor = UIColor.gray.cgColor
         innerCircleView.layer.addSublayer(innerCircle)
         
         innerCircle.strokeStart = 0.0
@@ -100,7 +100,7 @@ public class SwiftSpinner: UIView {
     //
     private static weak var customSuperview: UIView? = nil
     private static func containerView() -> UIView? {
-        return customSuperview ?? UIApplication.shared().keyWindow
+        return customSuperview ?? UIApplication.shared.keyWindow
     }
     public class func useContainerView(_ sv: UIView?) {
         customSuperview = sv
@@ -133,7 +133,7 @@ public class SwiftSpinner: UIView {
             
             #if os(iOS)
                 // Orientation change observer
-                NotificationCenter.default().addObserver(
+                NotificationCenter.default.addObserver(
                     spinner,
                     selector: #selector(SwiftSpinner.updateFrame),
                     name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
@@ -182,7 +182,7 @@ public class SwiftSpinner: UIView {
         
         let spinner = SwiftSpinner.sharedInstance
         
-        NotificationCenter.default().removeObserver(spinner)
+        NotificationCenter.default.removeObserver(spinner)
         if hideCancelsScheduledSpinners {
             delayedTokens.removeAll()
         }
@@ -306,7 +306,7 @@ public class SwiftSpinner: UIView {
             if let subtitle = subtitleLabel {
                 subtitle.text = subtitleText
                 subtitle.font = UIFont(name: defaultTitleFont.familyName, size: defaultTitleFont.pointSize * 0.8)
-                subtitle.textColor = UIColor.white()
+                subtitle.textColor = UIColor.white
                 subtitle.numberOfLines = 0
                 subtitle.textAlignment = .center
                 subtitle.lineBreakMode = .byWordWrapping
@@ -408,12 +408,13 @@ public class SwiftSpinner: UIView {
     
     // MARK: - Util methods
     
-    func delay(seconds: Double, completion:()->()) {
+    func delay(seconds: Double, completion:@escaping ()->()) {
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
-        DispatchQueue.main.after(when: popTime) {
+        DispatchQueue.main.asyncAfter(deadline: popTime, execute: {
+            // your function here
             completion()
-        }
+        })
     }
     
     override public func layoutSubviews() {

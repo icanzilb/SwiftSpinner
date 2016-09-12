@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2015 Marin Todorov, Underplot ltd.
+// Copyright (c) 2015-present Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -14,15 +14,15 @@ class ViewController: UIViewController {
     
     var progress = 0.0
     
-    func delay(seconds seconds: Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+    func delay(seconds: Double, completion:@escaping ()->()) {
+        let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
-        dispatch_after(popTime, dispatch_get_main_queue()) {
+        DispatchQueue.main.asyncAfter(deadline: popTime) {
             completion()
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.demoSpinner()
@@ -30,10 +30,10 @@ class ViewController: UIViewController {
     
     func demoSpinner() {
 
-        SwiftSpinner.showWithDelay(0.5, title: "Shouldn't see this one", animated: true)
+        SwiftSpinner.show(delay: 0.5, title: "Shouldn't see this one", animated: true)
         SwiftSpinner.hide()
         
-        SwiftSpinner.showWithDelay(1.0, title: "Connecting...", animated: true)
+        SwiftSpinner.show(delay: 1.0, title: "Connecting...", animated: true)
         
         delay(seconds: 2.0, completion: {
             SwiftSpinner.show("Connecting \nto satellite...").addTapHandler({
@@ -61,11 +61,11 @@ class ViewController: UIViewController {
         
         delay(seconds: 21.0, completion: {
             SwiftSpinner.setTitleFont(nil)
-            SwiftSpinner.showWithDuration(2.0, title: "Connected", animated: false)
+            SwiftSpinner.show(duration: 2.0, title: "Connected", animated: false)
         })
-        
+
         delay(seconds: 24.0) {
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.timerFire), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerFire), userInfo: nil, repeats: true)
         }
         
         delay(seconds: 34.0, completion: {
@@ -73,12 +73,12 @@ class ViewController: UIViewController {
         })
     }
     
-    func timerFire(timer: NSTimer) {
+    func timerFire(_ timer: Timer) {
         progress += (timer.timeInterval/5)
-        SwiftSpinner.showWithProgress(progress, title: "Downloading Data...")
+        SwiftSpinner.show(progress: progress, title: "Downloading: \(Int(progress * 100))% completed")
         if progress >= 1 {
             timer.invalidate()
-            SwiftSpinner.showWithDuration(2.0, title: "Complete!", animated: false)
+            SwiftSpinner.show(duration: 2.0, title: "Complete!", animated: false)
         }
     }
     

@@ -140,14 +140,19 @@
 		D20C82F01C77C1F1002CA000 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Underplot ltd.";
 				TargetAttributes = {
 					D20C82F81C77C1F1002CA000 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 72H5A3LE65;
+						DevelopmentTeamName = "Andrew King";
+						LastSwiftMigration = 0800;
 					};
 					D20C830A1C77C49D002CA000 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 72H5A3LE65;
+						DevelopmentTeamName = "Andrew King";
 					};
 				};
 			};
@@ -309,6 +314,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -326,6 +332,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.underplot.SwiftSpinner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

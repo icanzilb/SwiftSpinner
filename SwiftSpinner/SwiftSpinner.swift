@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2015-2016 Marin Todorov, Underplot ltd.
+// Copyright (c) 2015-present Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -109,6 +109,7 @@ public class SwiftSpinner: UIView {
     //
     // Show the spinner activity on screen, if visible only update the title
     //
+    @discardableResult
     public class func show(_ title: String, animated: Bool = true) -> SwiftSpinner {
         
         let spinner = SwiftSpinner.sharedInstance
@@ -150,7 +151,8 @@ public class SwiftSpinner: UIView {
     //
     // Show the spinner activity on screen with duration, if visible only update the title
     //
-    public class func showWithDuration(_ duration: Double, title: String, animated: Bool = true) -> SwiftSpinner {
+    @discardableResult
+    public class func show(duration: Double, title: String, animated: Bool = true) -> SwiftSpinner {
         let spinner = SwiftSpinner.show(title, animated: animated)
         spinner.delay(duration) {
             SwiftSpinner.hide()
@@ -163,7 +165,8 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    public class func showWithDelay(_ delay: Double, title: String, animated: Bool = true) {
+    @discardableResult
+    public class func show(delay: Double, title: String, animated: Bool = true) {
         let token = UUID().uuidString
         delayedTokens.append(token)
         SwiftSpinner.sharedInstance.delay(delay, completion: {
@@ -173,7 +176,17 @@ public class SwiftSpinner: UIView {
             }
         })
     }
-    
+
+    ///
+    /// Show the spinner with the outer circle representing progress (0 to 1)
+    ///
+    @discardableResult
+    public class func show(progress: Double, title: String) -> SwiftSpinner {
+        let spinner = SwiftSpinner.show(title, animated: false)
+        spinner.outerCircle.strokeEnd = CGFloat(progress)
+        return spinner
+    }
+
     //
     // Hide the spinner
     //
@@ -227,9 +240,15 @@ public class SwiftSpinner: UIView {
     //
     public var title: String = "" {
         didSet {
-            
             let spinner = SwiftSpinner.sharedInstance
-            
+
+            guard spinner.animating else {
+                spinner.titleLabel.transform = CGAffineTransform.identity
+                spinner.titleLabel.alpha = 1.0
+                spinner.titleLabel.text = self.title
+                return
+            }
+
             UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseOut, animations: {
                 spinner.titleLabel.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                 spinner.titleLabel.alpha = 0.2

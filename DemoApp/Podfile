@@ -2,6 +2,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
-target 'SwiftSpinnerDemo', :exclusive => true do
+target 'SwiftSpinnerDemo' do
     pod "SwiftSpinner", :path => ".."
 end

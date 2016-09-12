@@ -110,7 +110,7 @@ You show a message for a certain duration:
 Or you can use `SwiftSpinner` as a progress bar by directly setting the current progress like so:
 
 ```swift
-	SwiftSpinner.showWithProgress(0.2, title: "Downloading Data...") // 20% trough the process
+	SwiftSpinner.show(progress: 0.2, title: "Downloading Data...") // 20% trough the process
 ```
 
 ## Requirements

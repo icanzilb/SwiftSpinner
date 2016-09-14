@@ -46,8 +46,10 @@ public class SwiftSpinner: UIView {
         titleLabel.textAlignment = .center
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textColor = UIColor.white
         
-        vibrancyView.contentView.addSubview(titleLabel)
+        
+        blurView.contentView.addSubview(titleLabel)
         blurView.contentView.addSubview(vibrancyView)
         
         outerCircleView.frame.size = frameSize
@@ -64,7 +66,7 @@ public class SwiftSpinner: UIView {
         outerCircle.strokeStart = 0.0
         outerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(outerCircleView)
+        blurView.contentView.addSubview(outerCircleView)
         
         innerCircleView.frame.size = frameSize
         
@@ -81,7 +83,7 @@ public class SwiftSpinner: UIView {
         innerCircle.strokeStart = 0.0
         innerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(innerCircleView)
+        blurView.contentView.addSubview(innerCircleView)
         
         isUserInteractionEnabled = true
     }

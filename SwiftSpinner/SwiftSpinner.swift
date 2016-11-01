@@ -97,6 +97,24 @@ public class SwiftSpinner: UIView {
     public lazy var titleLabel = UILabel()
     public var subtitleLabel: UILabel?
     
+    fileprivate var _outerColor: UIColor?
+    public var outerColor: UIColor? {
+        get { return _outerColor }
+        set(newColor) {
+            _outerColor = newColor
+            outerCircle.strokeColor = newColor?.cgColor
+        }
+    }
+    
+    fileprivate var _innerColor: UIColor?
+    public var innerColor: UIColor? {
+        get { return _innerColor }
+        set(newColor) {
+            _innerColor = newColor
+            innerCircle.strokeColor = newColor?.cgColor
+        }
+    }
+    
     //
     // Custom superview for the spinner
     //

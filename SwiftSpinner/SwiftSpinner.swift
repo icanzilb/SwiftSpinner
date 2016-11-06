@@ -10,7 +10,6 @@
 import UIKit
 
 public class SwiftSpinner: UIView {
-    
     // MARK: - Singleton
     
     //
@@ -60,7 +59,7 @@ public class SwiftSpinner: UIView {
         outerCircle.strokeEnd = 0.45
         outerCircle.lineCap = kCALineCapRound
         outerCircle.fillColor = UIColor.clear.cgColor
-        outerCircle.strokeColor = UIColor.white.cgColor
+        outerCircle.strokeColor = outerCircleDefaultColor
         outerCircleView.layer.addSublayer(outerCircle)
         
         outerCircle.strokeStart = 0.0
@@ -77,7 +76,7 @@ public class SwiftSpinner: UIView {
         innerCircle.strokeEnd = 0.9
         innerCircle.lineCap = kCALineCapRound
         innerCircle.fillColor = UIColor.clear.cgColor
-        innerCircle.strokeColor = UIColor.gray.cgColor
+        innerCircle.strokeColor = innerCircleDefaultColor
         innerCircleView.layer.addSublayer(innerCircle)
         
         innerCircle.strokeStart = 0.0
@@ -96,22 +95,24 @@ public class SwiftSpinner: UIView {
     
     public lazy var titleLabel = UILabel()
     public var subtitleLabel: UILabel?
-    
+
+    private let outerCircleDefaultColor = UIColor.white.cgColor
     fileprivate var _outerColor: UIColor?
     public var outerColor: UIColor? {
         get { return _outerColor }
         set(newColor) {
             _outerColor = newColor
-            outerCircle.strokeColor = newColor?.cgColor
+            outerCircle.strokeColor = newColor?.cgColor ?? outerCircleDefaultColor
         }
     }
-    
+
+    private let innerCircleDefaultColor = UIColor.gray.cgColor
     fileprivate var _innerColor: UIColor?
     public var innerColor: UIColor? {
         get { return _innerColor }
         set(newColor) {
             _innerColor = newColor
-            innerCircle.strokeColor = newColor?.cgColor
+            innerCircle.strokeColor = newColor?.cgColor ?? innerCircleDefaultColor
         }
     }
     

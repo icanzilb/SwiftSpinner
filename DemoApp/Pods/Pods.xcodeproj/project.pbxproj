@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		32DFEC195DCFB89DF4166FBF53FC9F49 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5DCE055700DA8A7F4AE792C7351AC2 /* SwiftSpinner.swift */; };
-		6F38B3CE59A4AF0133B0392F0EB32431 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
-		75A31B916B9F5B431B69361CF60643A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		3314CF46B5D967B844C03ECAB6D2D22F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		44DB7BECD39B34DFC774C22B6417818C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
 		771D28784EC332494360E4D1FF7F8A7B /* SwiftSpinner.h in Headers */ = {isa = PBXBuildFile; fileRef = 49DB67425181EF1ABAE3C45B47BBE146 /* SwiftSpinner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78FCD35012F89D7BCF2EEE26C44F21B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
 		7C016232E0C4E350A4DB59A94C52645C /* Pods-SwiftSpinnerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB0361B0470FD4541C4A762726D525 /* Pods-SwiftSpinnerDemo-dummy.m */; };
 		823CA38E4241BA6E04276DC93E3B5F70 /* Pods-SwiftSpinnerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FF72711E9548E53DC3C2F19404CEED3 /* Pods-SwiftSpinnerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88C9D09F8024A961A4BE39F3E34C5035 /* SwiftSpinner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA908690C597E780BCF7C8F4C671AD4A /* SwiftSpinner-dummy.m */; };
 		B8D99B9546990AEE12D885C969A18AF1 /* SwiftSpinner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB26C46B2907E8107B97E5E31BE49BE1 /* SwiftSpinner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C32F65DD35D229CDFD88679FF2697D28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,16 +40,16 @@
 		49DB67425181EF1ABAE3C45B47BBE146 /* SwiftSpinner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SwiftSpinner.h; sourceTree = "<group>"; };
 		4D5C58973553CAB082408B23244E27E9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B18E1C1F17ADB0FC43249E4AE09B1E6 /* Pods-SwiftSpinnerDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftSpinnerDemo.modulemap"; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94AA5274EF8C2FE79F1B5E7AB0499979 /* Pods-SwiftSpinnerDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftSpinnerDemo-frameworks.sh"; sourceTree = "<group>"; };
 		95EF02F26FA60AC47562745828109DE9 /* Pods-SwiftSpinnerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftSpinnerDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B0FA8B472A13A99D572E54177B33F7EE /* Pods-SwiftSpinnerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftSpinnerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		CB26C46B2907E8107B97E5E31BE49BE1 /* SwiftSpinner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSpinner-umbrella.h"; sourceTree = "<group>"; };
 		D7EEC915DCBC8921DFE9EF2CB43AE9EB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D7FBB2FE53D065906FBEA06B47C3DB /* SwiftSpinner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSpinner-prefix.pch"; sourceTree = "<group>"; };
 		DC3B72BD487CB5AF5B81239B92905E18 /* SwiftSpinner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSpinner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FA908690C597E780BCF7C8F4C671AD4A /* SwiftSpinner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftSpinner-dummy.m"; sourceTree = "<group>"; };
 		FCA9BC76127082358854EE6DFDFA7F54 /* Pods-SwiftSpinnerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftSpinnerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A31B916B9F5B431B69361CF60643A9 /* Foundation.framework in Frameworks */,
+				3314CF46B5D967B844C03ECAB6D2D22F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78FCD35012F89D7BCF2EEE26C44F21B0 /* Foundation.framework in Frameworks */,
-				6F38B3CE59A4AF0133B0392F0EB32431 /* UIKit.framework in Frameworks */,
+				C32F65DD35D229CDFD88679FF2697D28 /* Foundation.framework in Frameworks */,
+				44DB7BECD39B34DFC774C22B6417818C /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */,
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,11 +156,11 @@
 			path = "Target Support Files/Pods-SwiftSpinnerDemo";
 			sourceTree = "<group>";
 		};
-		F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */ = {
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */,
-				E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */,
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";

@@ -145,7 +145,7 @@
 				TargetAttributes = {
 					D20C82F81C77C1F1002CA000 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 72H5A3LE65;
+						DevelopmentTeam = 79VM9HJ78C;
 						DevelopmentTeamName = "Andrew King";
 						LastSwiftMigration = 0800;
 					};
@@ -304,6 +304,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79VM9HJ78C;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -323,6 +324,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79VM9HJ78C;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

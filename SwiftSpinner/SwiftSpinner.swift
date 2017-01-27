@@ -32,7 +32,7 @@ public class SwiftSpinner: UIView {
         super.init(frame: frame)
         
         blurEffect = UIBlurEffect(style: blurEffectStyle)
-        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView = UIVisualEffectView()
         addSubview(blurView)
         
         vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
@@ -141,7 +141,7 @@ public class SwiftSpinner: UIView {
         
         if spinner.superview == nil {
             //show the spinner
-            spinner.alpha = 0.0
+            spinner.blurView.contentView.alpha = 0
             
             guard let containerView = containerView() else {
                 fatalError("\n`UIApplication.keyWindow` is `nil`. If you're trying to show a spinner from your view controller's `viewDidLoad` method, do that from `viewWillAppear` instead. Alternatively use `useContainerView` to set a view where the spinner should show")
@@ -150,7 +150,10 @@ public class SwiftSpinner: UIView {
             containerView.addSubview(spinner)
             
             UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
-                spinner.alpha = 1.0
+                
+                spinner.blurView.contentView.alpha = 1
+                spinner.blurView.effect = spinner.blurEffect
+                
                 }, completion: nil)
             
             #if os(iOS)
@@ -229,9 +232,12 @@ public class SwiftSpinner: UIView {
             }
             
             UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
-                spinner.alpha = 0.0
+                
+                spinner.blurView.contentView.alpha = 0
+                spinner.blurView.effect = nil
+                
                 }, completion: {_ in
-                    spinner.alpha = 1.0
+                    spinner.blurView.contentView.alpha = 1
                     spinner.removeFromSuperview()
                     spinner.titleLabel.font = spinner.defaultTitleFont
                     spinner.titleLabel.text = nil

@@ -29,6 +29,9 @@ public class SwiftSpinner: UIView {
     //
     
     public override init(frame: CGRect) {
+        
+        currentTitleFont = defaultTitleFont // By default we initialize to the same.
+        
         super.init(frame: frame)
         
         blurEffect = UIBlurEffect(style: blurEffectStyle)
@@ -40,7 +43,7 @@ public class SwiftSpinner: UIView {
         
         let titleScale: CGFloat = 0.85
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
-        titleLabel.font = defaultTitleFont
+        titleLabel.font = currentTitleFont
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.lineBreakMode = .byWordWrapping
@@ -239,7 +242,6 @@ public class SwiftSpinner: UIView {
                 }, completion: {_ in
                     spinner.blurView.contentView.alpha = 1
                     spinner.removeFromSuperview()
-                    spinner.titleLabel.font = spinner.defaultTitleFont
                     spinner.titleLabel.text = nil
                     
                     completion?()
@@ -256,8 +258,10 @@ public class SwiftSpinner: UIView {
         let spinner = SwiftSpinner.sharedInstance
         
         if let font = font {
+            spinner.currentTitleFont = font
             spinner.titleLabel.font = font
         } else {
+            spinner.currentTitleFont = spinner.defaultTitleFont
             spinner.titleLabel.font = spinner.defaultTitleFont
         }
     }
@@ -351,7 +355,7 @@ public class SwiftSpinner: UIView {
             subtitleLabel = UILabel()
             if let subtitle = subtitleLabel {
                 subtitle.text = subtitleText
-                subtitle.font = UIFont(name: defaultTitleFont.familyName, size: defaultTitleFont.pointSize * 0.8)
+                subtitle.font = UIFont(name: self.currentTitleFont.familyName, size: currentTitleFont.pointSize * 0.8)
                 subtitle.textColor = UIColor.white
                 subtitle.numberOfLines = 0
                 subtitle.textAlignment = .center
@@ -389,7 +393,9 @@ public class SwiftSpinner: UIView {
     private var blurView: UIVisualEffectView!
     private var vibrancyView: UIVisualEffectView!
     
-    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
+    private var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
+    private var currentTitleFont : UIFont
+    
     let frameSize = CGSize(width: 200.0, height: 200.0)
     
     private lazy var outerCircleView = UIView()

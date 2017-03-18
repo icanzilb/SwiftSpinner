@@ -1,20 +1,9 @@
-#
-# Be sure to run `pod lib lint SwiftSpinner.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "SwiftSpinner"
-  s.version          = "1.1.0"
+  s.version          = "1.2.0"
   s.summary          = "A beautiful activity indicator written in Swift"
   s.description      = <<-DESC
   	SwiftSpinner is an extra beautiful activity indicator with plain and bold style fitting iOS 8 design very well. It uses dynamic blur and translucency to overlay the current screen contents and display an activity indicator with text (or the so called “spinner”).
-
-  	I developed it for my Swift app called **Doodle Doodle** (http://doodledoodle.io) and wanted to share it with everyone.
                        DESC
   s.homepage         = "https://github.com/icanzilb/SwiftSpinner"
   s.screenshots      = "https://raw.githubusercontent.com/icanzilb/SwiftSpinner/master/etc/spinner-preview.gif"

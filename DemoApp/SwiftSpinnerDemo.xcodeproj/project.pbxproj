@@ -186,7 +186,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Underplot ltd.";
 				TargetAttributes = {
 					9C6D4F0C1A6BFE8500B10961 = {

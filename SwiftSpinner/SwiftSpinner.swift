@@ -192,7 +192,6 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    @discardableResult
     public class func show(delay: Double, title: String, animated: Bool = true) {
         let token = UUID().uuidString
         delayedTokens.append(token)

@@ -192,7 +192,6 @@ public class SwiftSpinner: UIView {
     // Show the spinner activity on screen, after delay. If new call to show,
     // showWithDelay or hide is maked before execution this call is discarded
     //
-    @discardableResult
     public class func show(delay: Double, title: String, animated: Bool = true) {
         let token = UUID().uuidString
         delayedTokens.append(token)
@@ -418,7 +417,7 @@ public class SwiftSpinner: UIView {
         }
         
         let duration = Double(Float(arc4random()) /  Float(UInt32.max)) * 2.0 + 1.5
-        let randomRotation = Double(Float(arc4random()) /  Float(UInt32.max)) * M_PI_4 + M_PI_4
+        let randomRotation = Double(Float(arc4random()) /  Float(UInt32.max)) * Double.pi/4 + Double.pi/4
         
         //outer circle
         UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: [], animations: {

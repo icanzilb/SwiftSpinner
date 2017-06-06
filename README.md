@@ -116,7 +116,7 @@ Or you can use `SwiftSpinner` as a progress bar by directly setting the current 
 
 ## Requirements
 
-There aren’t any requirements per se. As long as you got `UIKit` imported the spinner takes care of everything else.
+UIKit must be imported. If you are using SwiftSpinner in an App Extension, you must add `EXTENSION` to your `Other Swift Flags` Build Settings.
 
 ## Installation
 

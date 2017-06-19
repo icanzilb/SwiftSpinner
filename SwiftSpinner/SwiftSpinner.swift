@@ -159,26 +159,23 @@ public class SwiftSpinner: UIView {
                 #endif
             }
             
-            DispatchQueue.main.async {
-
-                containerView.addSubview(spinner)
+            containerView.addSubview(spinner)
+            
+            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
                 
-                UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
-                    
-                    spinner.blurView.contentView.alpha = 1
-                    spinner.blurView.effect = spinner.blurEffect
-                    
-                    }, completion: nil)
+                spinner.blurView.contentView.alpha = 1
+                spinner.blurView.effect = spinner.blurEffect
                 
-                #if os(iOS)
-                    // Orientation change observer
-                    NotificationCenter.default.addObserver(
-                        spinner,
-                        selector: #selector(SwiftSpinner.updateFrame),
-                        name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
-                        object: nil)
-                #endif
-            }
+            }, completion: nil)
+            
+            #if os(iOS)
+            // Orientation change observer
+            NotificationCenter.default.addObserver(
+                spinner,
+                selector: #selector(SwiftSpinner.updateFrame),
+                name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
+                object: nil)
+            #endif
         }
         
         spinner.title = title

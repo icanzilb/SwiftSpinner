@@ -124,7 +124,12 @@ public class SwiftSpinner: UIView {
     //
     private static weak var customSuperview: UIView? = nil
     private static func containerView() -> UIView? {
-        return customSuperview ?? UIApplication.shared.keyWindow
+        
+        #if EXTENSION
+            return customSuperview
+        #else
+            return customSuperview ?? UIApplication.shared.keyWindow
+        #endif
     }
     public class func useContainerView(_ sv: UIView?) {
         customSuperview = sv
@@ -147,26 +152,33 @@ public class SwiftSpinner: UIView {
             spinner.blurView.contentView.alpha = 0
             
             guard let containerView = containerView() else {
-                fatalError("\n`UIApplication.keyWindow` is `nil`. If you're trying to show a spinner from your view controller's `viewDidLoad` method, do that from `viewWillAppear` instead. Alternatively use `useContainerView` to set a view where the spinner should show")
+                #if EXTENSION
+                    fatalError("\n`containerView` is `nil`. `UIApplication.keyWindow` is not available in extensions and so, a containerView is required. Use `useContainerView` to set a view where the spinner should show")
+                #else
+                    fatalError("\n`UIApplication.keyWindow` is `nil`. If you're trying to show a spinner from your view controller's `viewDidLoad` method, do that from `viewWillAppear` instead. Alternatively use `useContainerView` to set a view where the spinner should show")
+                #endif
             }
             
-            containerView.addSubview(spinner)
-            
-            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
+            DispatchQueue.main.async {
+
+                containerView.addSubview(spinner)
                 
-                spinner.blurView.contentView.alpha = 1
-                spinner.blurView.effect = spinner.blurEffect
+                UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
+                    
+                    spinner.blurView.contentView.alpha = 1
+                    spinner.blurView.effect = spinner.blurEffect
+                    
+                    }, completion: nil)
                 
-                }, completion: nil)
-            
-            #if os(iOS)
-                // Orientation change observer
-                NotificationCenter.default.addObserver(
-                    spinner,
-                    selector: #selector(SwiftSpinner.updateFrame),
-                    name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
-                    object: nil)
-            #endif
+                #if os(iOS)
+                    // Orientation change observer
+                    NotificationCenter.default.addObserver(
+                        spinner,
+                        selector: #selector(SwiftSpinner.updateFrame),
+                        name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
+                        object: nil)
+                #endif
+            }
         }
         
         spinner.title = title

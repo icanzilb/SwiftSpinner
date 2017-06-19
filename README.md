@@ -9,7 +9,7 @@ SwiftSpinner is an extra beautiful activity indicator with plain and bold style 
 SwiftSpinner is now **swift3**.
 - - -
 
-I developed it for my Swift app called **Doodle Doodle** and wanted to share it with everyone. Check the app here: http://doodledoodle.info
+I developed it for my Swift app called **Doodle Doodle** and wanted to share it with everyone.
 
 This is how the activity looks like (from the demo app):
 
@@ -116,7 +116,9 @@ Or you can use `SwiftSpinner` as a progress bar by directly setting the current 
 
 ## Requirements
 
-There aren’t any requirements per se. As long as you got `UIKit` imported the spinner takes care of everything else.
+UIKit must be imported. If you are using SwiftSpinner in an App Extension, you must add `EXTENSION` to your `Other Swift Flags` Build Settings.
+
+![Extension Setting Screenshot](https://user-images.githubusercontent.com/444725/26855417-a7a8241a-4acf-11e7-8528-b37a28448113.png)
 
 ## Installation
 

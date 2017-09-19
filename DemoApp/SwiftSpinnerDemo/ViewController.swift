@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         })
     }
     
-    func timerFire(_ timer: Timer) {
+    @objc func timerFire(_ timer: Timer) {
         progress += (timer.timeInterval/5)
         SwiftSpinner.show(progress: progress, title: "Downloading: \(Int(progress * 100))% completed")
         if progress >= 1 {

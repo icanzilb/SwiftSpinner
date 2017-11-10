@@ -12,19 +12,8 @@
 		9C6D4F181A6BFE8500B10961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F161A6BFE8500B10961 /* Main.storyboard */; };
 		9C6D4F1A1A6BFE8500B10961 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F191A6BFE8500B10961 /* Images.xcassets */; };
 		9C6D4F1D1A6BFE8500B10961 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F1B1A6BFE8500B10961 /* LaunchScreen.xib */; };
-		9C6D4F291A6BFE8500B10961 /* SwiftSpinnerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6D4F281A6BFE8500B10961 /* SwiftSpinnerDemoTests.swift */; };
 		BAB7CFF9FC1DACFCDAB95C84 /* Pods_SwiftSpinnerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58C7ECEFE04EA0294B00353 /* Pods_SwiftSpinnerDemo.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9C6D4F231A6BFE8500B10961 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9C6D4F051A6BFE8500B10961 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C6D4F0C1A6BFE8500B10961;
-			remoteInfo = SwiftSpinnerDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2EE7CBCE61FFCC5D777E1E56 /* Pods-SwiftSpinnerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSpinnerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -36,9 +25,6 @@
 		9C6D4F171A6BFE8500B10961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C6D4F191A6BFE8500B10961 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C6D4F1C1A6BFE8500B10961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9C6D4F221A6BFE8500B10961 /* SwiftSpinnerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSpinnerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C6D4F271A6BFE8500B10961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6D4F281A6BFE8500B10961 /* SwiftSpinnerDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSpinnerDemoTests.swift; sourceTree = "<group>"; };
 		F58C7ECEFE04EA0294B00353 /* Pods_SwiftSpinnerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSpinnerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -51,13 +37,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C6D4F1F1A6BFE8500B10961 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,7 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				9C6D4F0F1A6BFE8500B10961 /* SwiftSpinnerDemo */,
-				9C6D4F251A6BFE8500B10961 /* SwiftSpinnerTests */,
 				9C6D4F0E1A6BFE8500B10961 /* Products */,
 				A92674FBE13907CECA6DED0A /* Pods */,
 				CF72F0AD5AFF6E2C8DBADED0 /* Frameworks */,
@@ -76,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				9C6D4F0D1A6BFE8500B10961 /* SwiftSpinnerDemo.app */,
-				9C6D4F221A6BFE8500B10961 /* SwiftSpinnerDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,24 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				9C6D4F111A6BFE8500B10961 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9C6D4F251A6BFE8500B10961 /* SwiftSpinnerTests */ = {
-			isa = PBXGroup;
-			children = (
-				9C6D4F281A6BFE8500B10961 /* SwiftSpinnerDemoTests.swift */,
-				9C6D4F261A6BFE8500B10961 /* Supporting Files */,
-			);
-			name = SwiftSpinnerTests;
-			path = SwiftSpinnerDemoTests;
-			sourceTree = "<group>";
-		};
-		9C6D4F261A6BFE8500B10961 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9C6D4F271A6BFE8500B10961 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,24 +119,6 @@
 			productReference = 9C6D4F0D1A6BFE8500B10961 /* SwiftSpinnerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9C6D4F211A6BFE8500B10961 /* SwiftSpinnerDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9C6D4F2F1A6BFE8500B10961 /* Build configuration list for PBXNativeTarget "SwiftSpinnerDemoTests" */;
-			buildPhases = (
-				9C6D4F1E1A6BFE8500B10961 /* Sources */,
-				9C6D4F1F1A6BFE8500B10961 /* Frameworks */,
-				9C6D4F201A6BFE8500B10961 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9C6D4F241A6BFE8500B10961 /* PBXTargetDependency */,
-			);
-			name = SwiftSpinnerDemoTests;
-			productName = SwiftSpinnerDemoTests;
-			productReference = 9C6D4F221A6BFE8500B10961 /* SwiftSpinnerDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,11 +133,6 @@
 					9C6D4F0C1A6BFE8500B10961 = {
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 0900;
-					};
-					9C6D4F211A6BFE8500B10961 = {
-						CreatedOnToolsVersion = 6.2;
-						LastSwiftMigration = 0900;
-						TestTargetID = 9C6D4F0C1A6BFE8500B10961;
 					};
 				};
 			};
@@ -214,7 +150,6 @@
 			projectRoot = "";
 			targets = (
 				9C6D4F0C1A6BFE8500B10961 /* SwiftSpinnerDemo */,
-				9C6D4F211A6BFE8500B10961 /* SwiftSpinnerDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,13 +165,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C6D4F201A6BFE8500B10961 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -246,9 +174,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -276,13 +207,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftSpinnerDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -297,23 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C6D4F1E1A6BFE8500B10961 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C6D4F291A6BFE8500B10961 /* SwiftSpinnerDemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9C6D4F241A6BFE8500B10961 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C6D4F0C1A6BFE8500B10961 /* SwiftSpinnerDemo */;
-			targetProxy = 9C6D4F231A6BFE8500B10961 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9C6D4F161A6BFE8500B10961 /* Main.storyboard */ = {
@@ -468,48 +386,6 @@
 			};
 			name = Release;
 		};
-		9C6D4F301A6BFE8500B10961 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftSpinnerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.underplot.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSpinnerDemo.app/SwiftSpinnerDemo";
-			};
-			name = Debug;
-		};
-		9C6D4F311A6BFE8500B10961 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftSpinnerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.underplot.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSpinnerDemo.app/SwiftSpinnerDemo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -527,15 +403,6 @@
 			buildConfigurations = (
 				9C6D4F2D1A6BFE8500B10961 /* Debug */,
 				9C6D4F2E1A6BFE8500B10961 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9C6D4F2F1A6BFE8500B10961 /* Build configuration list for PBXNativeTarget "SwiftSpinnerDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9C6D4F301A6BFE8500B10961 /* Debug */,
-				9C6D4F311A6BFE8500B10961 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

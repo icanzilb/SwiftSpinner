@@ -275,6 +275,19 @@ public class SwiftSpinner: UIView {
     }
     
     //
+    // Set the default title color
+    //
+    public class func setTitleColor(_ color: UIColor?) {
+        let spinner = SwiftSpinner.sharedInstance
+        
+        if let color = color {
+            spinner.titleLabel.textColor = color
+        } else {
+            spinner.titleLabel.textColor = spinner.defaultTitleColor
+        }
+    }
+    
+    //
     // The spinner title
     //
     public var title: String = "" {
@@ -404,6 +417,8 @@ public class SwiftSpinner: UIView {
     private let defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
     private var currentTitleFont : UIFont
     
+    private var defaultTitleColor = UIColor.white
+    
     let frameSize = CGSize(width: 200.0, height: 200.0)
     
     private lazy var outerCircleView = UIView()
@@ -463,6 +478,7 @@ public class SwiftSpinner: UIView {
     @objc public func updateFrame() {
         if let containerView = SwiftSpinner.containerView() {
             SwiftSpinner.sharedInstance.frame = containerView.bounds
+            containerView.bringSubview(toFront: SwiftSpinner.sharedInstance)
         }
     }
     

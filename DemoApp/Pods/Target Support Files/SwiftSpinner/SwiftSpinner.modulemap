@@ -1,6 +1,0 @@
-framework module SwiftSpinner {
-  umbrella header "SwiftSpinner-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -107,7 +107,6 @@
 				9C6D4F091A6BFE8500B10961 /* Sources */,
 				9C6D4F0A1A6BFE8500B10961 /* Frameworks */,
 				9C6D4F0B1A6BFE8500B10961 /* Resources */,
-				74D5287CAC98DBAE98356E3E /* [CP] Copy Pods Resources */,
 				73F78F40328C841193FCE6BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -132,7 +131,9 @@
 				TargetAttributes = {
 					9C6D4F0C1A6BFE8500B10961 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = H72GR44F4M;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -184,21 +185,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		74D5287CAC98DBAE98356E3E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		999FF0A134F82FAD080319D6 /* [CP] Check Pods Manifest.lock */ = {
@@ -354,15 +340,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EE7CBCE61FFCC5D777E1E56 /* Pods-SwiftSpinnerDemo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = SwiftSpinnerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.underplot.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				PROVISIONING_PROFILE = "f7168a28-8f3d-4e45-bcbd-a54a870789e7";
+				PROVISIONING_PROFILE_SPECIFIER = "General Development";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,15 +361,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7269BB1A68AD95F9000FD8F6 /* Pods-SwiftSpinnerDemo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = SwiftSpinnerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.underplot.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				PROVISIONING_PROFILE = "f7168a28-8f3d-4e45-bcbd-a54a870789e7";
+				PROVISIONING_PROFILE_SPECIFIER = "General Development";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

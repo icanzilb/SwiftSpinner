@@ -169,13 +169,16 @@ public class SwiftSpinner: UIView {
             }, completion: nil)
             
             #if os(iOS)
-            // Orientation change observer
-            NotificationCenter.default.addObserver(
-                spinner,
-                selector: #selector(SwiftSpinner.updateFrame),
-                name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
-                object: nil)
+                // Orientation change observer
+                NotificationCenter.default.addObserver(
+                    spinner,
+                    selector: #selector(SwiftSpinner.updateFrame),
+                    name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
+                    object: nil)
             #endif
+        } else if spinner.animating == false {
+            //if super view is not nil and animating is false this means that the spiner is in the process of hiding
+            spinner.delay(0.33) { SwiftSpinner.show(title, animated: animated) }
         }
         
         spinner.title = title
@@ -247,12 +250,12 @@ public class SwiftSpinner: UIView {
                 spinner.blurView.contentView.alpha = 0
                 spinner.blurView.effect = nil
                 
-                }, completion: {_ in
-                    spinner.blurView.contentView.alpha = 1
-                    spinner.removeFromSuperview()
-                    spinner.titleLabel.text = nil
-                    
-                    completion?()
+            }, completion: {_ in
+                spinner.blurView.contentView.alpha = 1
+                spinner.removeFromSuperview()
+                spinner.titleLabel.text = nil
+                
+                completion?()
             })
             
             spinner.animating = false

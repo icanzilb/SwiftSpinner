@@ -85,6 +85,7 @@ class ViewController: UIViewController {
         progress += (timer.timeInterval/5)
         SwiftSpinner.show(progress: progress, title: "Downloading: \(Int(progress * 100))% completed")
         if progress >= 1 {
+            progress = 0
             timer.invalidate()
             SwiftSpinner.show(duration: 2.0, title: "Complete!", animated: false)
         }

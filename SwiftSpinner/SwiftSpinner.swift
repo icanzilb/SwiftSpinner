@@ -152,7 +152,7 @@ public class SwiftSpinner: UIView {
         spinner.clearTapHandler()
       
         spinner.updateFrame()
-      
+
         if spinner.superview == nil {
             // Show the spinner
             spinner.blurView.contentView.alpha = 0
@@ -180,8 +180,8 @@ public class SwiftSpinner: UIView {
                     name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
                     object: nil)
             #endif
-        } else if spinner.animating == false {
-            // If the superview is not nil and animating is false this means that the spiner is in the process of hiding
+        } else if spinner.dismissing {
+            // If the spinner is hiding, delay the next show
             spinner.delay(0.33) { SwiftSpinner.show(title, animated: animated) }
         }
       
@@ -249,6 +249,8 @@ public class SwiftSpinner: UIView {
     /// - Parameter completion: A closure called upon completion
     public class func hide(_ completion: (() -> Void)? = nil) {
         let spinner = SwiftSpinner.sharedInstance
+        
+        spinner.dismissing = true
       
         NotificationCenter.default.removeObserver(spinner)
         if hideCancelsScheduledSpinners {
@@ -259,6 +261,7 @@ public class SwiftSpinner: UIView {
             spinner.clearTapHandler()
          
             if spinner.superview == nil {
+                spinner.dismissing = false
                 return
             }
          
@@ -269,7 +272,8 @@ public class SwiftSpinner: UIView {
                 spinner.blurView.contentView.alpha = 1
                 spinner.removeFromSuperview()
                 spinner.titleLabel.text = nil
-               
+                spinner.dismissing = false
+                
                 completion?()
             })
          
@@ -443,6 +447,8 @@ public class SwiftSpinner: UIView {
    
     private var currentOuterRotation: CGFloat = 0.0
     private var currentInnerRotation: CGFloat = 0.1
+    
+    private var dismissing: Bool = false
    
     private func spinOuter() {
         if superview == nil {

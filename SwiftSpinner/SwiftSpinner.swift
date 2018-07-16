@@ -180,9 +180,11 @@ public class SwiftSpinner: UIView {
                     name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
                     object: nil)
             #endif
-        } else if spinner.dismissing {
+        }
+        
+        else if spinner.dismissing {
             // If the spinner is hiding, delay the next show
-            spinner.delay(0.33) { SwiftSpinner.show(title, animated: animated) }
+            spinner.delay(0.33) { SwiftSpinner.show(duration: 0.66, title: title) }
         }
       
         spinner.title = title

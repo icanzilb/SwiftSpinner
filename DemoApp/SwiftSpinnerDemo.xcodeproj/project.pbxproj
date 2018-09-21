@@ -12,12 +12,9 @@
 		9C6D4F181A6BFE8500B10961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F161A6BFE8500B10961 /* Main.storyboard */; };
 		9C6D4F1A1A6BFE8500B10961 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F191A6BFE8500B10961 /* Images.xcassets */; };
 		9C6D4F1D1A6BFE8500B10961 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F1B1A6BFE8500B10961 /* LaunchScreen.xib */; };
-		BAB7CFF9FC1DACFCDAB95C84 /* Pods_SwiftSpinnerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58C7ECEFE04EA0294B00353 /* Pods_SwiftSpinnerDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2EE7CBCE61FFCC5D777E1E56 /* Pods-SwiftSpinnerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSpinnerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		7269BB1A68AD95F9000FD8F6 /* Pods-SwiftSpinnerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSpinnerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9C6D4F0D1A6BFE8500B10961 /* SwiftSpinnerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSpinnerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6D4F111A6BFE8500B10961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C6D4F121A6BFE8500B10961 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +22,6 @@
 		9C6D4F171A6BFE8500B10961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C6D4F191A6BFE8500B10961 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C6D4F1C1A6BFE8500B10961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F58C7ECEFE04EA0294B00353 /* Pods_SwiftSpinnerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSpinnerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB7CFF9FC1DACFCDAB95C84 /* Pods_SwiftSpinnerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +40,6 @@
 			children = (
 				9C6D4F0F1A6BFE8500B10961 /* SwiftSpinnerDemo */,
 				9C6D4F0E1A6BFE8500B10961 /* Products */,
-				A92674FBE13907CECA6DED0A /* Pods */,
-				CF72F0AD5AFF6E2C8DBADED0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,23 +72,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A92674FBE13907CECA6DED0A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2EE7CBCE61FFCC5D777E1E56 /* Pods-SwiftSpinnerDemo.debug.xcconfig */,
-				7269BB1A68AD95F9000FD8F6 /* Pods-SwiftSpinnerDemo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		CF72F0AD5AFF6E2C8DBADED0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F58C7ECEFE04EA0294B00353 /* Pods_SwiftSpinnerDemo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,11 +79,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C6D4F2C1A6BFE8500B10961 /* Build configuration list for PBXNativeTarget "SwiftSpinnerDemo" */;
 			buildPhases = (
-				999FF0A134F82FAD080319D6 /* [CP] Check Pods Manifest.lock */,
 				9C6D4F091A6BFE8500B10961 /* Sources */,
 				9C6D4F0A1A6BFE8500B10961 /* Frameworks */,
 				9C6D4F0B1A6BFE8500B10961 /* Resources */,
-				73F78F40328C841193FCE6BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,45 +141,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		73F78F40328C841193FCE6BA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		999FF0A134F82FAD080319D6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftSpinnerDemo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C6D4F091A6BFE8500B10961 /* Sources */ = {
@@ -342,7 +277,6 @@
 		};
 		9C6D4F2D1A6BFE8500B10961 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EE7CBCE61FFCC5D777E1E56 /* Pods-SwiftSpinnerDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -363,7 +297,6 @@
 		};
 		9C6D4F2E1A6BFE8500B10961 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7269BB1A68AD95F9000FD8F6 /* Pods-SwiftSpinnerDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

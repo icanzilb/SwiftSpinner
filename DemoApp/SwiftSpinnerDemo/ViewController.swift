@@ -11,8 +11,14 @@ import UIKit
 import SwiftSpinner
 
 class ViewController: UIViewController {
-    
+  
+    @IBOutlet var labelContainerView: UIView!
     var progress = 0.0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelContainerView.transform = CGAffineTransform(translationX: 0, y: 200)
+    }
     
     func delay(seconds: Double, completion: @escaping () -> ()) {
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
@@ -29,6 +35,9 @@ class ViewController: UIViewController {
     }
     
     func demoSpinner() {
+        UIView.animate(withDuration: 0.5) {
+            self.labelContainerView.transform = .identity
+        }
 
         SwiftSpinner.show(delay: 0.5, title: "Shouldn't see this one", animated: true)
         SwiftSpinner.hide()
@@ -90,5 +99,4 @@ class ViewController: UIViewController {
             SwiftSpinner.show(duration: 2.0, title: "Complete!", animated: false)
         }
     }
-    
 }

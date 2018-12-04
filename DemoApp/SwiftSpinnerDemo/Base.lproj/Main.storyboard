@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,33 +22,52 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hurricane_Irene" translatesAutoresizingMaskIntoConstraints="NO" id="dMf-EH-Gph">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Satellite connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JV-UQ-3C9">
-                                <rect key="frame" x="150" y="536" width="301.5" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="2" height="2"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miq-AU-iaN">
+                                <rect key="frame" x="36" y="597" width="303" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satellite Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SY-qD-1Uu">
+                                        <rect key="frame" x="75" y="14.5" width="153.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0SY-qD-1Uu" firstAttribute="centerY" secondItem="miq-AU-iaN" secondAttribute="centerY" id="1gH-K8-baA"/>
+                                    <constraint firstItem="0SY-qD-1Uu" firstAttribute="centerX" secondItem="miq-AU-iaN" secondAttribute="centerX" id="6d6-ht-6W4"/>
+                                    <constraint firstAttribute="height" constant="50" id="MZJ-tA-FjI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="6JV-UQ-3C9" secondAttribute="bottom" constant="20" id="6iS-wZ-Pd2"/>
-                            <constraint firstAttribute="centerX" secondItem="6JV-UQ-3C9" secondAttribute="centerX" id="9Kj-Z1-VnM"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dMf-EH-Gph" secondAttribute="bottom" id="MK8-YD-xFo"/>
-                            <constraint firstAttribute="trailing" secondItem="dMf-EH-Gph" secondAttribute="trailing" id="RIa-tw-nuy"/>
-                            <constraint firstItem="dMf-EH-Gph" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="SST-rJ-AGe"/>
-                            <constraint firstItem="dMf-EH-Gph" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="XEJ-hn-ZI5"/>
+                            <constraint firstItem="miq-AU-iaN" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="-20" id="4Ui-ny-9nc"/>
+                            <constraint firstItem="dMf-EH-Gph" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="7wt-92-x0n"/>
+                            <constraint firstAttribute="trailing" secondItem="dMf-EH-Gph" secondAttribute="trailing" id="Aig-df-zrN"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dMf-EH-Gph" secondAttribute="bottomMargin" id="I56-OP-fHi"/>
+                            <constraint firstItem="dMf-EH-Gph" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Sig-y6-zuA"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="miq-AU-iaN" secondAttribute="bottom" constant="20" id="Vgq-Q0-sDs"/>
+                            <constraint firstItem="miq-AU-iaN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="hTk-ZU-HaH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelContainerView" destination="miq-AU-iaN" id="aqd-ex-G2C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Hurricane_Irene" width="1024" height="1024"/>
+        <image name="Hurricane_Irene" width="768" height="768"/>
     </resources>
 </document>

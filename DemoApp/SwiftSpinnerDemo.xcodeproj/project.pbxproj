@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8214CD3F7EBE60FDA5D144D7 /* Pods_SwiftSpinnerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FB9D7DED93CCAF58068570 /* Pods_SwiftSpinnerDemo.framework */; };
 		9C6D4F131A6BFE8500B10961 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6D4F121A6BFE8500B10961 /* AppDelegate.swift */; };
 		9C6D4F151A6BFE8500B10961 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6D4F141A6BFE8500B10961 /* ViewController.swift */; };
 		9C6D4F181A6BFE8500B10961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D4F161A6BFE8500B10961 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21415BA7C8806F30C948C592 /* Pods-SwiftSpinnerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSpinnerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		62FB9D7DED93CCAF58068570 /* Pods_SwiftSpinnerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSpinnerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8612604C661B52F9AAEF005F /* Pods-SwiftSpinnerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSpinnerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9C6D4F0D1A6BFE8500B10961 /* SwiftSpinnerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSpinnerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6D4F111A6BFE8500B10961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C6D4F121A6BFE8500B10961 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8214CD3F7EBE60FDA5D144D7 /* Pods_SwiftSpinnerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BF1807D69DAFE8395B13A82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8612604C661B52F9AAEF005F /* Pods-SwiftSpinnerDemo.debug.xcconfig */,
+				21415BA7C8806F30C948C592 /* Pods-SwiftSpinnerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C6AC1CC9B704EC21CC3D44F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62FB9D7DED93CCAF58068570 /* Pods_SwiftSpinnerDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C6D4F041A6BFE8500B10961 = {
 			isa = PBXGroup;
 			children = (
 				9C6D4F0F1A6BFE8500B10961 /* SwiftSpinnerDemo */,
 				9C6D4F0E1A6BFE8500B10961 /* Products */,
+				1BF1807D69DAFE8395B13A82 /* Pods */,
+				9C6AC1CC9B704EC21CC3D44F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C6D4F2C1A6BFE8500B10961 /* Build configuration list for PBXNativeTarget "SwiftSpinnerDemo" */;
 			buildPhases = (
+				B8923B58542177DAC45C73FB /* [CP] Check Pods Manifest.lock */,
 				9C6D4F091A6BFE8500B10961 /* Sources */,
 				9C6D4F0A1A6BFE8500B10961 /* Frameworks */,
 				9C6D4F0B1A6BFE8500B10961 /* Resources */,
+				484FD15C056446A28695606B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +167,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		484FD15C056446A28695606B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8923B58542177DAC45C73FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftSpinnerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C6D4F091A6BFE8500B10961 /* Sources */ = {
@@ -277,6 +350,7 @@
 		};
 		9C6D4F2D1A6BFE8500B10961 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8612604C661B52F9AAEF005F /* Pods-SwiftSpinnerDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -289,6 +363,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f7168a28-8f3d-4e45-bcbd-a54a870789e7";
 				PROVISIONING_PROFILE_SPECIFIER = "General Development";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -297,6 +372,7 @@
 		};
 		9C6D4F2E1A6BFE8500B10961 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21415BA7C8806F30C948C592 /* Pods-SwiftSpinnerDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

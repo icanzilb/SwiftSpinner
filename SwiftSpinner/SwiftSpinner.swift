@@ -339,13 +339,9 @@ public class SwiftSpinner: UIView {
             titleLabel.center = vibrancyView.center
             outerCircleView.center = vibrancyView.center
             innerCircleView.center = vibrancyView.center
-            if let subtitle = subtitleLabel {
-                subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
-                subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize)
-            }
+            layoutSubtitle()
         }
     }
-
     
     /// Start the spinning animation
     public var animating: Bool = false {
@@ -394,8 +390,7 @@ public class SwiftSpinner: UIView {
                 subtitle.numberOfLines = 0
                 subtitle.textAlignment = .center
                 subtitle.lineBreakMode = .byWordWrapping
-                subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
-                subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize)
+                layoutSubtitle()
                 vibrancyView.contentView.addSubview(subtitle)
             }
         }
@@ -504,6 +499,17 @@ public class SwiftSpinner: UIView {
       
         DispatchQueue.main.asyncAfter(deadline: popTime) {
             completion()
+        }
+    }
+    
+    fileprivate func layoutSubtitle() {
+        if let subtitle = subtitleLabel {
+            subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
+            var safeArea: CGFloat = 0
+            if #available(iOS 11.0, *) {
+                safeArea = superview?.safeAreaInsets.bottom ?? 0
+            }
+            subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize - safeArea)
         }
     }
    

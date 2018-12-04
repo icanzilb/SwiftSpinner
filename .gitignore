@@ -27,3 +27,4 @@ DerivedData
 # Pods/
 DemoApp/Pods
 DemoApp/SwiftSpinnerDemo.xcworkspace
+SwiftSpinner.framework.zip

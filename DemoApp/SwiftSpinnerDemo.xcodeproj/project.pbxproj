@@ -132,17 +132,16 @@
 					9C6D4F0C1A6BFE8500B10961 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = H72GR44F4M;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
 			buildConfigurationList = 9C6D4F081A6BFE8500B10961 /* Build configuration list for PBXProject "SwiftSpinnerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -178,7 +177,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -189,7 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftSpinnerDemo/Pods-SwiftSpinnerDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8923B58542177DAC45C73FB /* [CP] Check Pods Manifest.lock */ = {
@@ -367,8 +366,7 @@
 				PROVISIONING_PROFILE = "f7168a28-8f3d-4e45-bcbd-a54a870789e7";
 				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -388,8 +386,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f7168a28-8f3d-4e45-bcbd-a54a870789e7";
 				PROVISIONING_PROFILE_SPECIFIER = Development;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -50,7 +50,6 @@ public class SwiftSpinner: UIView {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textColor = UIColor.white
       
-      
         blurView.contentView.addSubview(titleLabel)
         blurView.contentView.addSubview(vibrancyView)
       
@@ -222,7 +221,7 @@ public class SwiftSpinner: UIView {
         let token = UUID().uuidString
         delayedTokens.append(token)
         SwiftSpinner.sharedInstance.delay(delay, completion: {
-            if let index = delayedTokens.index(of: token) {
+            if let index = delayedTokens.firstIndex(of: token) {
                 delayedTokens.remove(at: index)
                 SwiftSpinner.show(title, animated: animated)
             }

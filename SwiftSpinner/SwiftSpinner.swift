@@ -10,6 +10,8 @@
 import UIKit
 
 public class SwiftSpinner: UIView {
+    fileprivate static let standardAnimationDuration = 0.33
+    
    // MARK: - Singleton
    
     //
@@ -167,7 +169,7 @@ public class SwiftSpinner: UIView {
          
             containerView.addSubview(spinner)
          
-            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: SwiftSpinner.standardAnimationDuration, delay: 0.0, options: .curveEaseOut, animations: {
                 spinner.blurView.contentView.alpha = 1
                 spinner.blurView.effect = spinner.blurEffect
             }, completion: nil)
@@ -180,11 +182,9 @@ public class SwiftSpinner: UIView {
                     name: UIApplication.didChangeStatusBarOrientationNotification,
                     object: nil)
             #endif
-        }
-        
-        else if spinner.dismissing {
-            // If the spinner is hiding, delay the next show
-            spinner.delay(0.33) { SwiftSpinner.show(duration: 0.66, title: title) }
+        } else if spinner.dismissing {
+            // If the spinner is hiding, delay the next show. The duration is set to double the standard animation to avoid an edge case that caused endless laoding. See #125
+            spinner.delay(SwiftSpinner.standardAnimationDuration) { SwiftSpinner.show(duration: SwiftSpinner.standardAnimationDuration * 2, title: title) }
         }
       
         spinner.title = title
@@ -267,7 +267,7 @@ public class SwiftSpinner: UIView {
                 return
             }
          
-            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: SwiftSpinner.standardAnimationDuration, delay: 0.0, options: .curveEaseOut, animations: {
                 spinner.blurView.contentView.alpha = 0
                 spinner.blurView.effect = nil
             }, completion: {_ in

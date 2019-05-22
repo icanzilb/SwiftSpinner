@@ -192,7 +192,6 @@ public class SwiftSpinner: UIView {
         return spinner
     }
    
-   
     /// Show the spinner activity on screen with duration, if visible only update the title
     ///
     /// - Parameters:
@@ -205,6 +204,25 @@ public class SwiftSpinner: UIView {
         let spinner = SwiftSpinner.show(title, animated: animated)
         spinner.delay(duration) {
             SwiftSpinner.hide()
+        }
+        return spinner
+    }
+       
+    /// Show the spinner activity on screen with duration, if visible only update the title. 
+    /// Call completion handler after delay.
+    ///
+    /// - Parameters:
+    ///   - duration: The duration of the show animation
+    ///   - title: The title shown under the spinner
+    ///   - animated: Animate the spinner. Defaults to true
+    ///   - completion: Completion callback handler. 
+    /// - Returns: The instance of the spinner
+    @discardableResult
+    public class func show(duration: Double, title: String, animated: Bool = true, completion: @escaping () -> ()) -> SwiftSpinner {
+        let spinner = SwiftSpinner.show(title, animated: animated)
+        spinner.delay(duration) {
+            SwiftSpinner.hide()
+            completion()
         }
         return spinner
     }

@@ -221,8 +221,9 @@ public class SwiftSpinner: UIView {
     public class func show(duration: Double, title: String, animated: Bool = true, completion: @escaping () -> ()) -> SwiftSpinner {
         let spinner = SwiftSpinner.show(title, animated: animated)
         spinner.delay(duration) {
-            SwiftSpinner.hide()
-            completion()
+            SwiftSpinner.hide({
+                completion()
+            })
         }
         return spinner
     }

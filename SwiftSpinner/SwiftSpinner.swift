@@ -17,12 +17,7 @@ public class SwiftSpinner: UIView {
     //
     // Access the singleton instance
     //
-    public class var sharedInstance: SwiftSpinner {
-        struct Singleton {
-            static let instance = SwiftSpinner(frame: CGRect.zero)
-        }
-        return Singleton.instance
-    }
+    public static let shared = SwiftSpinner(frame: CGRect.zero)
 
     // MARK: - Init
 
@@ -151,7 +146,7 @@ public class SwiftSpinner: UIView {
     /// - Returns: The instance of the spinner
     @discardableResult
     public class func show(_ title: String, animated: Bool = true) -> SwiftSpinner {
-        let spinner = SwiftSpinner.sharedInstance
+        let spinner = SwiftSpinner.shared
 
         spinner.clearTapHandler()
 
@@ -201,12 +196,15 @@ public class SwiftSpinner: UIView {
     ///   - duration: The duration of the show animation
     ///   - title: The title shown under the spinner
     ///   - animated: Animate the spinner. Defaults to true
+    ///   - completion: An optional completion handler
     /// - Returns: The instance of the spinner
     @discardableResult
-    public class func show(duration: Double, title: String, animated: Bool = true) -> SwiftSpinner {
+    public class func show(duration: Double, title: String, animated: Bool = true, completion: (() -> ())? = nil) -> SwiftSpinner {
         let spinner = SwiftSpinner.show(title, animated: animated)
         spinner.delay(duration) {
-            SwiftSpinner.hide()
+            SwiftSpinner.hide {
+                completion?()
+            }
         }
         return spinner
     }
@@ -222,7 +220,7 @@ public class SwiftSpinner: UIView {
     public class func show(delay: Double, title: String, animated: Bool = true) {
         let token = UUID().uuidString
         delayedTokens.append(token)
-        SwiftSpinner.sharedInstance.delay(delay, completion: {
+        SwiftSpinner.shared.delay(delay, completion: {
             if let index = delayedTokens.firstIndex(of: token) {
                 delayedTokens.remove(at: index)
                 SwiftSpinner.show(title, animated: animated)
@@ -250,7 +248,7 @@ public class SwiftSpinner: UIView {
     ///
     /// - Parameter completion: A closure called upon completion
     public class func hide(_ completion: (() -> Void)? = nil) {
-        let spinner = SwiftSpinner.sharedInstance
+        let spinner = SwiftSpinner.shared
 
         spinner.dismissing = true
 
@@ -287,7 +285,7 @@ public class SwiftSpinner: UIView {
     ///
     /// - Parameter font: The title font
     public class func setTitleFont(_ font: UIFont?) {
-        let spinner = SwiftSpinner.sharedInstance
+        let spinner = SwiftSpinner.shared
 
         spinner.currentTitleFont = font ?? spinner.defaultTitleFont
         spinner.titleLabel.font = font ?? spinner.defaultTitleFont
@@ -297,7 +295,7 @@ public class SwiftSpinner: UIView {
     ///
     /// - Parameter color: The title color
     public class func setTitleColor(_ color: UIColor?) {
-        let spinner = SwiftSpinner.sharedInstance
+        let spinner = SwiftSpinner.shared
 
         spinner.titleLabel.textColor = color ?? spinner.defaultTitleColor
     }
@@ -305,7 +303,7 @@ public class SwiftSpinner: UIView {
     /// The spinner title
     public var title: String = "" {
         didSet {
-            let spinner = SwiftSpinner.sharedInstance
+            let spinner = SwiftSpinner.shared
 
             guard spinner.animating else {
                 spinner.titleLabel.transform = CGAffineTransform.identity
@@ -485,8 +483,8 @@ public class SwiftSpinner: UIView {
 
     @objc public func updateFrame() {
         if let containerView = SwiftSpinner.containerView() {
-            SwiftSpinner.sharedInstance.frame = containerView.bounds
-            containerView.bringSubviewToFront(SwiftSpinner.sharedInstance)
+            SwiftSpinner.shared.frame = containerView.bounds
+            containerView.bringSubviewToFront(SwiftSpinner.shared)
         }
     }
 

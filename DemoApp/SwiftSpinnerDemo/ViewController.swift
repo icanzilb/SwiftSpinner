@@ -56,13 +56,13 @@ class ViewController: UIViewController {
         })
         
         delay(seconds: 10.0, completion: {
-            SwiftSpinner.sharedInstance.outerColor = UIColor.red.withAlphaComponent(0.5)
+            SwiftSpinner.shared.outerColor = UIColor.red.withAlphaComponent(0.5)
             SwiftSpinner.setTitleColor(UIColor.red)
             SwiftSpinner.show("Failed to connect, waiting...", animated: false)
         })
         
         delay(seconds: 14.0, completion: {
-            SwiftSpinner.sharedInstance.outerColor = nil
+            SwiftSpinner.shared.outerColor = nil
             SwiftSpinner.setTitleFont(UIFont(name: "Futura", size: 22.0))
             SwiftSpinner.setTitleColor(UIColor.white)
             SwiftSpinner.show("Retrying to authenticate")
@@ -75,13 +75,13 @@ class ViewController: UIViewController {
         
         delay(seconds: 21.0, completion: {
             SwiftSpinner.setTitleFont(nil)
-            SwiftSpinner.sharedInstance.innerColor = UIColor.green.withAlphaComponent(0.5)
+            SwiftSpinner.shared.innerColor = UIColor.green.withAlphaComponent(0.5)
             SwiftSpinner.show(duration: 2.0, title: "Connected", animated: false)
         })
 
         delay(seconds: 24.0) {
             SwiftSpinner.setTitleColor(UIColor.white)
-            SwiftSpinner.sharedInstance.innerColor = nil
+            SwiftSpinner.shared.innerColor = nil
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerFire), userInfo: nil, repeats: true)
         }
         

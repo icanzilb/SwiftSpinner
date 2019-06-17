@@ -186,7 +186,7 @@ public class SwiftSpinner: UIView {
             #endif
         } else if spinner.dismissing {
             // If the spinner is hiding, delay the next show. The duration is set to double the standard animation to avoid an edge case that caused endless laoding. See #125
-            spinner.delay(SwiftSpinner.standardAnimationDuration) { SwiftSpinner.show(duration: SwiftSpinner.standardAnimationDuration * 2, title: title) }
+            show(delay: SwiftSpinner.standardAnimationDuration, title: title, animated: true)
         }
 
         spinner.title = title

@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/SwiftSpinner.svg?style=flat)](http://cocoadocs.org/docsets/SwiftSpinner)
 [![License](https://img.shields.io/cocoapods/l/SwiftSpinner.svg?style=flat)](http://cocoadocs.org/docsets/SwiftSpinner)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftSpinner.svg?style=flat)](http://cocoadocs.org/docsets/SwiftSpinner)
-![Swift 4](https://img.shields.io/badge/swift-4-orange.svg)
+![Swift 5.0](https://img.shields.io/badge/swift-5.0-orange.svg)
 
 SwiftSpinner is an extra beautiful activity indicator with plain and bold style fitting iOS 8 design very well. It uses dynamic blur and translucency to overlay the current screen contents and display an activity indicator with text (or the so called “spinner”).
 
@@ -112,6 +112,11 @@ Or you can use `SwiftSpinner` as a progress bar by directly setting the current 
 
 ```swift
 SwiftSpinner.show(progress: 0.2, title: "Downloading Data...") // 20% trough the process
+```
+
+If you want to see the content behind the spinner, set the showBlurBackground to false:
+```swift
+SwiftSpinner.showBlurBackground = false
 ```
 
 ## Requirements

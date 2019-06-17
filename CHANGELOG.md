@@ -2,11 +2,24 @@
 All notable changes to this project will be documented in this file.
 `SwiftSpinner` adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.6.x` Releases - [1.6.0](#160)  
-- `1.5.x` Releases - [1.5.0](#150)  
-- `1.4.x` Releases - [1.4.0](#140)  
+- `2.0.x` Releases - [2.0.0](#200)
+- `1.6.x` Releases - [1.6.0](#160)
+- `1.5.x` Releases - [1.5.0](#150)
+- `1.4.x` Releases - [1.4.0](#140)
 
 ---
+
+## [2.0.0](https://github.com/icanzilb/SwiftSpinner/releases/tag/2.0.0)
+
+### Breaking change
+
+The singleton property has been renamed to `shared` in accordance with other platform conventions.
+
+### Other changes
+
+- Added a completion handler to the `hdie` method, see #135
+- Merged #136
+- Merged #134
 
 ## [1.6.0](https://github.com/icanzilb/SwiftSpinner/releases/tag/1.6.0)
 

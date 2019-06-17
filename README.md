@@ -91,8 +91,8 @@ SwiftSpinner.setTitleFont(nil)
 In case you want to change an arbitrary aspect of the text on screen access directly:
 
 ```swift
-SwiftSpinner.sharedInstance.titleLabel
-SwiftSpinner.sharedInstance.subtitleLabel
+SwiftSpinner.shared.titleLabel
+SwiftSpinner.shared.subtitleLabel
 ```
 
 You can show a spinner only if certain amount of time has passed (e.g. if you are downloading a file - show a message only if the operation takes longer than certain amount of time):

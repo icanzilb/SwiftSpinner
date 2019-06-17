@@ -140,6 +140,7 @@ public class SwiftSpinner: UIView {
         customSuperview = sv
     }
 
+    /// Show the blurred background. If false the background content will be visible. Defaults to true.
     public static var showBlurBackground: Bool = true
 
     /// Show the spinner activity on screen, if visible only update the title

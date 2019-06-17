@@ -114,6 +114,11 @@ Or you can use `SwiftSpinner` as a progress bar by directly setting the current 
 SwiftSpinner.show(progress: 0.2, title: "Downloading Data...") // 20% trough the process
 ```
 
+If you want to see the content behind the spinner, set the showBlurBackground to false:
+```swift
+SwiftSpinner.showBlurBackground = false
+```
+
 ## Requirements
 
 UIKit must be imported. If you are using SwiftSpinner in an App Extension, you must add `EXTENSION` to your `Other Swift Flags` Build Settings.

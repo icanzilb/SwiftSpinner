@@ -99,4 +99,8 @@ class ViewController: UIViewController {
             SwiftSpinner.show(duration: 2.0, title: "Complete!", animated: false)
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

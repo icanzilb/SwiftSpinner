@@ -502,7 +502,7 @@ public class SwiftSpinner: UIView {
         if let subtitle = subtitleLabel {
             subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
             var safeArea: CGFloat = 0
-            if #available(iOS 11.0, *) {
+            if #available(iOS 11.0, tvOS 11.0, *) {
                 safeArea = superview?.safeAreaInsets.bottom ?? 0
             }
             subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize - safeArea)

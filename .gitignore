@@ -28,3 +28,6 @@ DerivedData
 DemoApp/Pods
 DemoApp/SwiftSpinnerDemo.xcworkspace
 SwiftSpinner.framework.zip
+
+# SwiftPM
+.swiftpm/

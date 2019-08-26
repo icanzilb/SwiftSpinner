@@ -1,5 +1,5 @@
 PODS:
-  - SwiftSpinner (1.7.0)
+  - SwiftSpinner (2.0.0)
 
 DEPENDENCIES:
   - SwiftSpinner (from `..`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  SwiftSpinner: e7da6c9e2fab46442c02726d2e30105c1a84c59d
+  SwiftSpinner: 86cc2a0100e5dbf4593f061d0333fdde28310779
 
 PODFILE CHECKSUM: 5adf66974bfcbc3d3779f9ca34933795856ca3dc
 

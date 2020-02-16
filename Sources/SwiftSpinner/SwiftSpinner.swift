@@ -126,7 +126,11 @@ public class SwiftSpinner: UIView {
         #if EXTENSION
             return customSuperview
         #else
-            return customSuperview ?? UIApplication.shared.keyWindow
+            if #available(iOS 13, *) {
+                return customSuperview ?? UIApplication.shared.windows.first{ $0.isKeyWindow }
+            } else {
+                return customSuperview ?? UIApplication.shared.keyWindow
+            }
         #endif
     }
 
@@ -175,8 +179,8 @@ public class SwiftSpinner: UIView {
                 // Orientation change observer
                 NotificationCenter.default.addObserver(
                     spinner,
-                    selector: #selector(SwiftSpinner.updateFrame),
-                    name: UIApplication.didChangeStatusBarOrientationNotification,
+                    selector: #selector(SwiftSpinner.orientationChangedAction),
+                    name: UIDevice.orientationDidChangeNotification,
                     object: nil)
             #endif
         } else if spinner.dismissing {
@@ -480,8 +484,14 @@ public class SwiftSpinner: UIView {
                 })
         })
     }
-
-    @objc public func updateFrame() {
+    
+    @objc func orientationChangedAction() {
+        if let _ = SwiftSpinner.containerView() {
+            SwiftSpinner.shared.setNeedsLayout()
+        }
+    }
+    
+    public func updateFrame() {
         if let containerView = SwiftSpinner.containerView() {
             SwiftSpinner.shared.frame = containerView.bounds
             containerView.bringSubviewToFront(SwiftSpinner.shared)

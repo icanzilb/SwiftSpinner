@@ -13,7 +13,7 @@ I developed it for my Swift app called **Doodle Doodle** and wanted to share it 
 
 This is how the activity looks like (from the demo app):
 
-![SwiftSpinner Screenshot](https://raw.githubusercontent.com/icanzilb/SwiftSpinner/master/etc/spinner-preview.gif)
+![SwiftSpinner Screenshot](https://raw.githubusercontent.com/icanzilb/SwiftSpinner/main/etc/spinner-preview.gif)
 
 ## Usage
 
